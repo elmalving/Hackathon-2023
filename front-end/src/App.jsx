@@ -6,6 +6,7 @@ import Progress from './components/Progress';
 import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './pages/NotFound';
+import Calendar from './components/Calendar';
 
 function App() {
   const router = createBrowserRouter(
@@ -30,9 +31,10 @@ function App() {
 const Roote = () => {
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
       <div>
-        <Outlet/>
+        <Calendar/>
+        {/* <Outlet/> */}
       </div>
     </div>
   );
