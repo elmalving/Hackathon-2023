@@ -72,7 +72,7 @@ def login_user():
 @app.route('/logout', methods=['POST'])
 def logout_user():
     session.pop('user_id')
-    return 200
+    return '200'
 
 
 if __name__ == '__main__':
