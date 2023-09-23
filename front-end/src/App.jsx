@@ -6,7 +6,6 @@ import Progress from './components/Progress';
 import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './pages/NotFound';
-import Calendar from './components/Calendar';
 import './css/main.css'
 
 function App() {
@@ -31,12 +30,6 @@ function App() {
 
 const Roote = () => {
   return (
-    <div>
-      {/* <Navbar/> */}
-      <div>
-        <Calendar/>
-        {/* <Outlet/> */}
-      </div>
     <div className='container'>
       <Navbar/>
       <Outlet/>

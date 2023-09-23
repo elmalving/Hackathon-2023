@@ -44,7 +44,6 @@ const Chat = () => {
         return (
             <div>
                 <button onClick={logoutUser}>Logout</button>
-                <input></input>
             </div>
         );
     }
