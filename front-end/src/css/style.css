@@ -1,10 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 button, input {
     border: none;
     background-color: transparent;
 }
 
-button {
+button, a {
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-link:hover {
+    animation: jump 0.3s ease-in-out;
+}
+@keyframes jump {
+    0%, 20%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.navbar-item {
+    transition: transform 0.2s ease-in;
+}
+
+.navbar-item:hover {
+    transform: translateX(5px);
 }
 
 .layout {
@@ -79,6 +110,11 @@ button {
     width: 20px;
     height: 20px;
     filter: drop-shadow(0px 4px 6px rgba(104, 107, 110, 0.16)) drop-shadow(0px 10px 15px rgba(104, 107, 110, 0.16));
+    transition: scale 0.3s ease;
+}
+
+.search:hover {
+    scale: 1.2;
 }
 
 .chat-1 a {
@@ -114,7 +150,13 @@ button {
 .calendar {
     width: 15px;
     height: 15px;
+    transition: scale 0.3s ease;
 }
+
+.calendar:hover {
+    scale: 1.2;
+}
+
 
 .label a {
     text-decoration: none;
@@ -141,7 +183,13 @@ button {
 .bar-chart {
     width: 18px;
     height: 25px;
+    transition: scale 0.3s ease;
 }
+
+.bar-chart:hover {
+    scale: 1.2;
+}
+
 
 .subject {
     display: flex;
@@ -174,6 +222,11 @@ button {
     width: 30px;
     height: 20px;
     filter: drop-shadow(0px 4px 6px rgba(182, 240, 156, 0.16)) drop-shadow(0px 10px 15px rgba(182, 240, 156, 0.16));
+    transition: scale 0.3s ease;
+}
+
+.math-square:hover {
+    scale: 1.2;
 }
 
 .physics {
@@ -197,13 +250,24 @@ button {
     width: 30px;
     height: 20px;
     filter: drop-shadow(0px 4px 6px rgba(189, 59, 58, 0.16)) drop-shadow(0px 10px 15px rgba(189, 59, 58, 0.16));
+    transition: scale 0.3s ease;
+}
+
+.triangle:hover {
+    scale: 1.2;
 }
 
 .square-1 {
     width: 30px;
     height: 20px;
     filter: drop-shadow(0px 4px 6px rgba(226, 111, 32, 0.16)) drop-shadow(0px 10px 15px rgba(226, 111, 32, 0.16));
+    transition: scale 0.3s ease;
 }
+
+.square-1:hover {
+    scale: 1.2;
+}
+
 
 .language {
     display: flex;
@@ -244,6 +308,11 @@ button {
     width: 30px;
     height: 22px;
     filter: drop-shadow(0px 4px 6px rgba(130, 219, 247, 0.16)) drop-shadow(0px 10px 15px rgba(130, 219, 247, 0.16));
+    transition: scale 0.3s ease;
+}
+
+.octagon:hover {
+    scale: 1.2;
 }
 
 .new-subject {
@@ -267,7 +336,13 @@ button {
 .plus-circle {
     width: 20px;
     height: 20px;
+    transition: scale 0.3s ease;
 }
+
+.plus-circle:hover {
+    scale: 1.2;
+}
+
 
 .footer {
     display: flex;
@@ -306,6 +381,11 @@ button {
 .cog {
     width: 30px;
     height: 24px;
+    transition: scale 0.3s ease;
+}
+
+.cog:hover {
+    scale: 1.2;
 }
 
 .logo {
@@ -332,6 +412,11 @@ button {
 .close-tab-1 {
     width: 23px;
     height: 23px;
+    transition: scale 0.3s ease;
+}
+
+.close-tab-1:hover {
+    scale: 1.2;
 }
 
 .content {
@@ -345,12 +430,31 @@ button {
 
 .chat {
     display: flex;
+    max-height: 86vh;
+    overflow: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 64px;
     flex: 1;
     align-self: stretch;
+    height: 100%;
+}
+
+.chat-content {
+    overflow-y: scroll;
+}
+
+.chat-content div {
+    font-family: Plus Jakarta Sans;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: left;
+    display: flex;
+    width: 70vw;
+    white-space: normal;
+    flex-direction: column;
+    position: relative;
 }
 
 .frame-4 {
@@ -414,4 +518,9 @@ button {
     gap: 12px;
     border-radius: 12px;
     background: var(--noble-black-600, #1A1D21);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }

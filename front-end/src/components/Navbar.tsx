@@ -64,7 +64,9 @@ const Navbar = () => {
                                 </defs>
                             </svg>
                         </div>
+                            <div className="navbar-link">
                         <Link to={'/'}>Chat</Link>
+                    </div>
                     </div>
                     <div className="schedule">
                         <div className="label">
@@ -80,7 +82,9 @@ const Navbar = () => {
                                     </defs>
                                 </svg>
                             </div>
+                            <div className="navbar-link">
                             <Link to={'/schedule'}>Schedule</Link>
+                        </div>
                         </div>
                     </div>
                     <div className="progress">
@@ -101,7 +105,9 @@ const Navbar = () => {
                                     </defs>
                                 </svg>
                             </div>
+                            <div className="navbar-link">
                             <Link to={'/progress'}>Progress</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,6 +115,7 @@ const Navbar = () => {
             <div className='subject'>
                 <div className="heading">Subject</div>
                 <div className="list">
+                    <a href='#'>
                     <div className="math">
                         <div className="math-square">
                             <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
@@ -135,9 +142,13 @@ const Navbar = () => {
                                 </defs>
                             </svg>
                         </div>
+                        <div className="navbar-item">
                         Math
+                        </div>
                     </div>
+                    </a>
                     <div className="physics">
+                        <a href='#'>
                         <div className="label">
                             <div className="triangle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
@@ -164,9 +175,13 @@ const Navbar = () => {
                                 </defs>
                                 </svg>
                             </div>
+                            <div className="navbar-item">
                             Physics
+                            </div>
                         </div>
+                        </a>
                     </div>
+                    <a href='#'>
                     <div className="language">
                         <div className="square-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
@@ -193,9 +208,13 @@ const Navbar = () => {
                                 </defs>
                             </svg>
                         </div>
+                        <div className="navbar-item">
                         Czech Language
+                        </div>
                     </div>  
+                    </a>
                     <div className="geography">
+                        <a href='#'>
                         <div className="label">
                             <div className="octagon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
@@ -222,37 +241,46 @@ const Navbar = () => {
                                     </defs>
                                 </svg>
                             </div>
-                            Geography
+                            <div className="navbar-item">
+                            Geography</div>
                         </div>
+                        </a>
                     </div>
                     <div className="new-subject">
+                        <a href='#'>
                         <div className="label">
                             <div className="plus-circle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M10 6.66667V10M10 10V13.3333M10 10H13.3333M10 10H6.66667M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C14.1421 2.5 17.5 5.85786 17.5 10Z" stroke="#363A3D" strokeWidth="1.5" strokeLinecap="round"/>
                                 </svg>
                             </div>
-                            Add new subject
+                            <div className="navbar-item">
+                            Add new subject</div>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
             <div className='footer'>
                 <div className="user">
                     <div className="user-1">
+                    <a href='#'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                             <path d="M46.4849 24.0066C46.4849 29.9737 44.1145 35.6964 39.8951 39.9158C35.6757 44.1352 29.953 46.5056 23.9859 46.5056C18.0188 46.5056 12.296 44.1352 8.07664 39.9158C3.85725 35.6964 1.48682 29.9737 1.48682 24.0066C1.48682 18.0394 3.85725 12.3167 8.07664 8.09732C12.296 3.87793 18.0188 1.5075 23.9859 1.5075C29.953 1.5075 35.6757 3.87793 39.8951 8.09732C44.1145 12.3167 46.4849 18.0394 46.4849 24.0066ZM43.3153 21.3647C42.2371 13.7409 36.9046 7.47656 29.4871 5.30156C20.6718 2.71687 11.2134 6.64031 6.85775 14.7103C3.40025 21.1172 3.78369 28.8534 7.84025 34.9087C7.84414 34.9145 7.84922 34.9193 7.85513 34.9228C7.86104 34.9264 7.86764 34.9286 7.87445 34.9293C7.88126 34.9301 7.88811 34.9293 7.89452 34.927C7.90093 34.9247 7.90673 34.9211 7.9115 34.9163C16.8243 25.905 31.169 25.9022 40.0668 34.8956C40.0747 34.9038 40.0842 34.9101 40.0949 34.914C40.1055 34.918 40.1169 34.9195 40.1281 34.9184C40.1394 34.9173 40.1503 34.9137 40.16 34.9078C40.1697 34.9019 40.1779 34.8939 40.184 34.8844C42.8184 30.8681 43.9884 26.1234 43.3153 21.3647Z" fill="#686B6E"/>
                             <path d="M24.0009 25.4925C28.9673 25.4925 32.9934 21.4664 32.9934 16.5C32.9934 11.5336 28.9673 7.5075 24.0009 7.5075C19.0345 7.5075 15.0084 11.5336 15.0084 16.5C15.0084 21.4664 19.0345 25.4925 24.0009 25.4925Z" fill="#686B6E"/>
                         </svg>
+                        </a>
                         <div className="email">
                             {user.email}
                         </div>
                     </div>
                     <div className="cog">
+                        <a href='#'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10Z" stroke="#686B6E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             <path d="M6.90136 6.74691C5.96492 6.20626 4.76749 6.52711 4.22684 7.46355L4.1851 7.53585C3.64424 8.47265 3.96521 9.67052 4.902 10.2114L5.1448 10.3516C5.71742 10.6822 6 11.3388 6 12C6 12.6612 5.71742 13.3179 5.1448 13.6485L4.902 13.7886C3.96521 14.3295 3.64424 15.5274 4.1851 16.4642L4.22684 16.5365C4.7675 17.4729 5.96492 17.7938 6.90136 17.2531L7.14546 17.1122C7.71803 16.7816 8.42331 16.863 8.9953 17.1946C9.56711 17.5261 10 18.1005 10 18.7614V19.0427C10 20.1237 10.8763 21 11.9573 21H12.0427C13.1237 21 14 20.1237 14 19.0427V18.7614C14 18.1005 14.4329 17.5261 15.0047 17.1946C15.5767 16.863 16.282 16.7816 16.8545 17.1122L17.0986 17.2531C18.0351 17.7938 19.2325 17.4729 19.7732 16.5365L19.8149 16.4642C20.3558 15.5274 20.0348 14.3295 19.098 13.7886L18.8552 13.6485C18.2826 13.3179 18 12.6612 18 12C18 11.3388 18.2826 10.6822 18.8552 10.3516L19.098 10.2114C20.0348 9.67052 20.3558 8.47263 19.8149 7.53583L19.7732 7.46355C19.2325 6.5271 18.0351 6.20625 17.0986 6.74691L16.8545 6.88784C16.282 7.21842 15.5767 7.137 15.0047 6.80543C14.4329 6.47397 14 5.89953 14 5.2386V4.95729C14 3.87632 13.1237 3.00002 12.0427 3.00002L11.9573 3.00002C10.8763 3.00002 10 3.87632 10 4.95729V5.2386C10 5.89953 9.56711 6.47397 8.9953 6.80543C8.42331 7.137 7.71803 7.21842 7.14546 6.88784L6.90136 6.74691Z" stroke="#686B6E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
+                        </a>
                     </div>
                 </div>
             </div>
