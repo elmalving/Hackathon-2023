@@ -1,3 +1,12 @@
+button, input {
+    border: none;
+    background-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
 .layout {
     border-radius: 20px;
     background: var(--noble-black-800, #0D0F10);
@@ -33,6 +42,108 @@
     align-self: stretch;
 }
 
+.heading {
+    display: flex;
+    padding: 0px 12px;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    color: var(--noble-black-400, #686B6E);
+    font-family: Plus Jakarta Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.15px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.chat-1 {
+    display: flex;
+    width: 280px;
+    height: 32px;
+    padding: 14px 16px 14px 1px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    border-top: 1px solid var(--glass-stroke, rgba(255, 255, 255, 0.08));
+    background: linear-gradient(118deg, rgba(215, 237, 237, 0.16) -47.79%, rgba(204, 235, 235, 0.00) 100%);
+}
+
+.search {
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(0px 4px 6px rgba(104, 107, 110, 0.16)) drop-shadow(0px 10px 15px rgba(104, 107, 110, 0.16));
+}
+
+.chat-1 a {
+    padding-left: 8px;
+    text-decoration: none;
+    color: var(--noble-black-100, #E8E9E9);
+    text-align: center;
+    font-family: Plus Jakarta Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.schedule {
+    display: flex;
+    width: 280px;
+    height: 32px;
+    padding: 14px 16px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.calendar {
+    width: 15px;
+    height: 15px;
+}
+
+.label a {
+    text-decoration: none;
+    color: var(--noble-black-100, #E8E9E9);
+    text-align: center;
+    font-family: Plus Jakarta Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+}
+
+.progress {
+    display: flex;
+    width: 280px;
+    height: 32px;
+    padding: 14px 16px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+}
+
+.bar-chart {
+    width: 15px;
+    height: 25px;
+}
+
 .subject {
     display: flex;
     padding: 24px 8px;
@@ -41,6 +152,15 @@
     gap: 24px;
     flex: 1;
     align-self: stretch;
+}
+
+.math {
+    display: flex;
+    width: 296px;
+    height: 48px;
+    padding: 14px 16px;
+    align-items: center;
+    gap: 16px;
 }
 
 .footer {
@@ -53,9 +173,29 @@
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    background-color: white;
+    width: 30px;
+    height: 30px;
+}
+
+.study-mate {
+    display: flex;
+    width: 150px;
+    height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    color: #FFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Plus Jakarta Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+}
+
+.close-tab-1 {
+    width: 23px;
+    height: 23px;
 }
 
 .content {
@@ -119,9 +259,7 @@
     gap: 8px;
     flex: 1;
     color: grey;
-    border:none;
     outline: none;
-    background-color: transparent;
     font-family: Plus Jakarta Sans;
     font-size: 16px;
     font-style: normal;
@@ -135,7 +273,6 @@
     width: 48px;
     height: 48px;
     padding: 8px 24px;
-    border: none;
     justify-content: center;
     align-items: center;
     gap: 12px;
