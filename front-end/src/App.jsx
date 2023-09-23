@@ -6,6 +6,7 @@ import Progress from './components/Progress';
 import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './pages/NotFound';
+import './css/main.css'
 
 function App() {
   const router = createBrowserRouter(
@@ -29,11 +30,9 @@ function App() {
 
 const Roote = () => {
   return (
-    <div>
+    <div className='container'>
       <Navbar/>
-      <div>
-        <Outlet/>
-      </div>
+      <Outlet/>
     </div>
   );
 }

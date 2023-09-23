@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import httpClient from "../httpClient";
 
-const Login = () => {
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+const Register = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const registerUser = async () => {
+        try {
+            await httpClient.post('//localhost:5000/register', {
+                email,
+                password,
+            });
+
+            window.location.href = '/';
+        }
+        catch (e) {
+            if (e.response.status === 409) {
+                alert('User already Exists.');
+            }
+        }
+    };
 
     return (
         <div>
-            <h1>Log Into Your Account</h1>
+            <h1>Create an account</h1>
             <form>
                 <div>
                     <label>Email: </label>
@@ -26,9 +43,12 @@ const Login = () => {
                         id=''
                     />
                 </div>
+                <button type='button' onClick={() => registerUser()}>
+                    Submit
+                </button>
             </form>
         </div>
     );
 }
 
-export default Login;
+export default Register;
