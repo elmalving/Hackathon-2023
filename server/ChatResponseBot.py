@@ -4,6 +4,7 @@ import requests
 import json
 from pprint import pprint
 import dotenv
+from flask import Flask, jsonify
 
 dotenv.load_dotenv()
 
@@ -132,6 +133,9 @@ class ChatGPT_Assistant:
         self.current_answer = answer
 
         print(answer)
+
+
+app = Flask(__name__)
 
 # Создаем объекты классов
 search_assistant = SearchAssistant(openai_api_key, bing_search_api_key)
