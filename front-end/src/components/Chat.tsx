@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from "react";
 import httpClient from "../httpClient";
 import { User } from '../types'
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import {MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator} from "@chatscope/chat-ui-kit-react"
-
 
 const Chat = () => {
     const [user, setUser] = useState<User | null>(null);
