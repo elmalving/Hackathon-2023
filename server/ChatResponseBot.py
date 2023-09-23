@@ -1,16 +1,15 @@
-import os
 import openai
 import requests
 import json
-from pprint import pprint
 import dotenv
-from flask import Flask, jsonify
+from flask import Flask
 
 dotenv.load_dotenv()
 
 openai_api_key = "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"
 bing_search_api_key = "42e8664ce249475db05e95ad586face1"
 bing_search_endpoint = "https://api.bing.microsoft.com/v7.0/search"
+
 
 class SearchAssistant:
     def __init__(self, openai_api_key, bing_search_api_key):
