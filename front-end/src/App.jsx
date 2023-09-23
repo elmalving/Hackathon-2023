@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import NotFound from './pages/NotFound';
 import Calendar from './components/Calendar';
+import './css/main.css'
 
 function App() {
   const router = createBrowserRouter(
@@ -36,6 +37,9 @@ const Roote = () => {
         <Calendar/>
         {/* <Outlet/> */}
       </div>
+    <div className='container'>
+      <Navbar/>
+      <Outlet/>
     </div>
   );
 }

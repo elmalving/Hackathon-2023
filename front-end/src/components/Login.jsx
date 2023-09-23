@@ -6,15 +6,20 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     const logInUser = async () => {
-        console.log(email, password);
+        try {
+            const response = await httpClient.post('//localhost:5000/login', {
+                email,
+                password,
+            });
 
-        const response = await httpClient.post('//localhost:5000/login', {
-            email,
-            password,
-        });
-
-        console.log(response.data);
-    }
+            window.location.href = '/';
+        }
+        catch (e) {
+            if (e.response.status === 401) {
+                alert('Invalid credentials.');
+            }
+        }
+    };
 
     return (
         <div>
@@ -38,7 +43,9 @@ const Login = () => {
                         id=''
                     />
                 </div>
-                <button type='button' onClick={() => logInUser()}>Submit</button>
+                <button type='button' onClick={() => logInUser()}>
+                    Submit
+                </button>
             </form>
         </div>
     );
