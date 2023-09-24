@@ -28,7 +28,7 @@ const Navbar = () => {
     return (
         <div className='sidebar layout'>
             <div className="workspace ">
-                <img src='/logo.svg' className="logo"/>
+                <img src='/brand.svg' className="logo"/>
                 <div className='study-mate'>StudyMate</div>
                 <div className="close-tab">
                     <button type='button'>
