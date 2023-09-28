@@ -137,20 +137,20 @@ class ChatGPT_Assistant:
 
         print(answer)
 #
-#
-# app = Flask(__name__)
-#
-# # Создаем объекты классов
-# search_assistant = SearchAssistant(openai_api_key, bing_search_api_key)
-# test_generator = TestGenerator(openai_api_key, bing_search_api_key)
-# chatgpt_assistant = ChatGPT_Assistant(openai_api_key, bing_search_api_key)
-#
-# # Пример использования:
-# question = input("What is your question? ")
-# chatgpt_assistant.answer_question(question)
-# extracted_topic = chatgpt_assistant.extract_topic(question)
-# print(test_generator.create_test_json(extracted_topic))
-# search_assistant.search(extracted_topic)
-# print(search_assistant.urls_json)
-#
-#
+
+app = Flask(__name__)
+
+# Создаем объекты классов
+search_assistant = SearchAssistant(openai_api_key, bing_search_api_key)
+test_generator = TestGenerator(openai_api_key, bing_search_api_key)
+chatgpt_assistant = ChatGPT_Assistant(openai_api_key, bing_search_api_key)
+
+# Пример использования:
+question = input("What is your question? ")
+chatgpt_assistant.answer_question(question)
+extracted_topic = chatgpt_assistant.extract_topic(question)
+print(test_generator.create_test_json(extracted_topic))
+search_assistant.search(extracted_topic)
+print(search_assistant.urls_json)
+
+
