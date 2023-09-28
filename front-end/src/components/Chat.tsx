@@ -51,8 +51,12 @@ const Chat = () => {
     }, [messages]);
     
     const logoutUser = async () => {
-        const response = await httpClient.post('//localhost:5000/logout');
-        location.reload();
+        try {
+            await httpClient.post('//localhost:5000/logout');
+            location.reload();
+        } catch (error) {
+            console.log('Server error.');
+        }
     }
 
     useEffect(() => {
@@ -83,7 +87,7 @@ const Chat = () => {
                             <div className="welcome">
                                 Welcome to StudyMate
                             </div>
-                            <div className="text">
+                            <div className="welcome-text">
                                 We provide unique live chat training to help you achieve your goals and 
                                 learn conveniently and efficiently.
                             </div>
@@ -101,7 +105,7 @@ const Chat = () => {
                         </div>
                     )}
                 </div>
-                <div className="form-container layout">
+                <div className="form-container">
                     <form className="input-form" onSubmit={(e) => handleSubmit(e)}>
                         <div className="message-input">
                             <input

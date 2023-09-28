@@ -22,7 +22,7 @@ const Navbar = () => {
     }, []);
 
     return isCollapsed ? (
-        <div className="close-tab">
+        <div className="icon">
             <button type='button' onClick={() => {setCollapsed(false)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 23 24" fill="none">
                     <path d="M15.4383 3.3997L15.4249 3.38623C15.4174 3.37874 15.4085 3.37515 15.3984 3.37544L13.2062 3.38667" stroke="#686B6E" strokeWidth="2"/>
@@ -33,11 +33,11 @@ const Navbar = () => {
             </button>
         </div>
         ) : (
-        <div className='sidebar layout'>
-            <div className="workspace ">
-                <img src='/brand.svg' className="logo"/>
-                <div className='study-mate'>StudyMate</div>
-                <div className="close-tab">
+        <div className='sidebar'>
+            <div className="header">
+                <img src='./brand.svg' className="logo"/>
+                <div className='text-label'>StudyMate</div>
+                <div className="icon">
                     <button type='button' onClick={() => {setCollapsed(true)}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 23 24" fill="none">
                             <path d="M15.4383 3.3997L15.4249 3.38623C15.4174 3.37874 15.4085 3.37515 15.3984 3.37544L13.2062 3.38667" stroke="#686B6E" strokeWidth="2"/>
@@ -48,7 +48,7 @@ const Navbar = () => {
                     </button>
                 </div>
             </div>
-            <div className='general'>
+            <div className='topic'>
                 <div className="heading">
                     General
                 </div>
@@ -116,51 +116,55 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div className='subject'>
-                <div className="heading">Subject</div>
+            <div className='topic'>
+                <div className="heading">
+                    Subject
+                </div>
                 <div className="list">
-                    <a href='#'>
-                        <div className="math">
-                            <div className="math-square">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
-                                    <g filter="url(#filter0_dd_474_6392)">
-                                        <rect x="13.5" y="3.5" width="15" height="15" rx="3" stroke="#B6F09C" strokeWidth="1.5" strokeLinecap="round"/>
-                                    </g>
-                                    <defs>
-                                        <filter id="filter0_dd_474_6392" x="-1" y="-1" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                            <feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_474_6392"/>
-                                            <feOffset dy="4"/>
-                                            <feGaussianBlur stdDeviation="3"/>
-                                            <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.941176 0 0 0 0 0.611765 0 0 0 0.16 0"/>
-                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_474_6392"/>
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                            <feMorphology radius="3" operator="erode" in="SourceAlpha" result="effect2_dropShadow_474_6392"/>
-                                            <feOffset dy="10"/>
-                                            <feGaussianBlur stdDeviation="7.5"/>
-                                            <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.941176 0 0 0 0 0.611765 0 0 0 0.16 0"/>
-                                            <feBlend mode="normal" in2="effect1_dropShadow_474_6392" result="effect2_dropShadow_474_6392"/>
-                                            <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_474_6392" result="shape"/>
-                                        </filter>
-                                    </defs>
-                                </svg>
+                    <div className="link-container">
+                        <a href='#'>
+                            <div className="link-box">
+                                <div className="green-shadow item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
+                                        <g filter="url(#filter0_dd_474_6392)">
+                                            <rect x="13.5" y="3.5" width="15" height="15" rx="3" stroke="#B6F09C" strokeWidth="1.5" strokeLinecap="round"/>
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_dd_474_6392" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                <feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_474_6392"/>
+                                                <feOffset dy="4"/>
+                                                <feGaussianBlur stdDeviation="3"/>
+                                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.941176 0 0 0 0 0.611765 0 0 0 0.16 0"/>
+                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_474_6392"/>
+                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                <feMorphology radius="3" operator="erode" in="SourceAlpha" result="effect2_dropShadow_474_6392"/>
+                                                <feOffset dy="10"/>
+                                                <feGaussianBlur stdDeviation="7.5"/>
+                                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.941176 0 0 0 0 0.611765 0 0 0 0.16 0"/>
+                                                <feBlend mode="normal" in2="effect1_dropShadow_474_6392" result="effect2_dropShadow_474_6392"/>
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_474_6392" result="shape"/>
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div className="navbar-item">
+                                    Math
+                                </div>
                             </div>
-                            <div className="navbar-item">
-                                Math
-                            </div>
-                        </div>
-                    </a>
-                    <a href='#'>
-                        <div className="physics">
-                            <div className="label">
-                                <div className="triangle">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+                        </a>
+                    </div>
+                    <div className="link-container">
+                        <a href='#'>
+                            <div className="link-box">
+                                <div className="red-shadow item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
                                         <g filter="url(#filter0_dd_474_6398)">
                                             <path d="M15.9072 17.5H24.0929C26.3747 17.5 27.8212 15.0536 26.7215 13.0542L21.7525 4.01955C20.9926 2.638 19.0075 2.638 18.2476 4.01955L13.2785 13.0542C12.1789 15.0536 13.6254 17.5 15.9072 17.5Z" stroke="#D0302F" strokeWidth="1.5" strokeLinecap="round"/>
                                         </g>
                                         <defs>
-                                            <filter id="filter0_dd_474_6398" x="-2" y="-2" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <filter id="filter0_dd_474_6398" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                                 <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                                 <feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_474_6398"/>
@@ -183,50 +187,52 @@ const Navbar = () => {
                                     Physics
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <a href='#'>
-                        <div className="language">
-                            <div className="lang-square">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
-                                    <g filter="url(#filter0_dd_474_6404)">
-                                        <rect x="13.5" y="3.5" width="15" height="15" rx="3" stroke="#E26F20" strokeWidth="1.5" strokeLinecap="round"/>
-                                    </g>
-                                    <defs>
-                                        <filter id="filter0_dd_474_6404" x="-1" y="-1" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                            <feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_474_6404"/>
-                                            <feOffset dy="4"/>
-                                            <feGaussianBlur stdDeviation="3"/>
-                                            <feColorMatrix type="matrix" values="0 0 0 0 0.886275 0 0 0 0 0.435294 0 0 0 0 0.12549 0 0 0 0.16 0"/>
-                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_474_6404"/>
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                            <feMorphology radius="3" operator="erode" in="SourceAlpha" result="effect2_dropShadow_474_6404"/>
-                                            <feOffset dy="10"/>
-                                            <feGaussianBlur stdDeviation="7.5"/>
-                                            <feColorMatrix type="matrix" values="0 0 0 0 0.886275 0 0 0 0 0.435294 0 0 0 0 0.12549 0 0 0 0.16 0"/>
-                                            <feBlend mode="normal" in2="effect1_dropShadow_474_6404" result="effect2_dropShadow_474_6404"/>
-                                            <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_474_6404" result="shape"/>
-                                        </filter>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div className="navbar-item">
-                                Czech Language
-                            </div>
-                        </div>  
-                    </a>
-                    <a href='#'>
-                        <div className="geography">
-                            <div className="label">
-                                <div className="octagon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
+                        </a>
+                    </div>
+                    <div className="link-container">
+                        <a href='#'>
+                            <div className="link-box">
+                                <div className="orange-shadow item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
+                                        <g filter="url(#filter0_dd_474_6404)">
+                                            <rect x="13.5" y="3.5" width="15" height="15" rx="3" stroke="#E26F20" strokeWidth="1.5" strokeLinecap="round"/>
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_dd_474_6404" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                <feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_474_6404"/>
+                                                <feOffset dy="4"/>
+                                                <feGaussianBlur stdDeviation="3"/>
+                                                <feColorMatrix type="matrix" values="0 0 0 0 0.886275 0 0 0 0 0.435294 0 0 0 0 0.12549 0 0 0 0.16 0"/>
+                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_474_6404"/>
+                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                <feMorphology radius="3" operator="erode" in="SourceAlpha" result="effect2_dropShadow_474_6404"/>
+                                                <feOffset dy="10"/>
+                                                <feGaussianBlur stdDeviation="7.5"/>
+                                                <feColorMatrix type="matrix" values="0 0 0 0 0.886275 0 0 0 0 0.435294 0 0 0 0 0.12549 0 0 0 0.16 0"/>
+                                                <feBlend mode="normal" in2="effect1_dropShadow_474_6404" result="effect2_dropShadow_474_6404"/>
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_474_6404" result="shape"/>
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div className="navbar-item">
+                                    Czech Language
+                                </div>
+                            </div>  
+                        </a>
+                    </div>
+                    <div className="link-container">
+                        <a href='#'>
+                            <div className="link-box">
+                                <div className="aqua-shadow item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
                                         <g filter="url(#filter0_dd_474_6410)">
                                             <path d="M21 18.5H23.9216C24.452 18.5 24.9607 18.2893 25.3358 17.9142L27.9142 15.3358C28.2893 14.9607 28.5 14.452 28.5 13.9216V11V8.07843C28.5 7.54799 28.2893 7.03929 27.9142 6.66421L25.3358 4.08579C24.9607 3.71071 24.452 3.5 23.9216 3.5H21H18.0784C17.548 3.5 17.0393 3.71071 16.6642 4.08579L14.0858 6.66421C13.7107 7.03929 13.5 7.54799 13.5 8.07843V11V13.9216C13.5 14.452 13.7107 14.9607 14.0858 15.3358L16.6642 17.9142C17.0393 18.2893 17.548 18.5 18.0784 18.5H21Z" stroke="#82DBF7" strokeWidth="1.5" strokeLinecap="round"/>
                                         </g>
                                         <defs>
-                                            <filter id="filter0_dd_474_6410" x="-1" y="-1" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                            <filter id="filter0_dd_474_6410" width="44" height="44" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                                 <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                                                 <feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_dropShadow_474_6410"/>
@@ -249,38 +255,36 @@ const Navbar = () => {
                                     Geography
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <a href='#'>
-                        <div className="new-subject">
-                            <div className="label">
-                                <div className="plus-circle">
+                        </a>
+                    </div>
+                    <div className="link-container">
+                        <a href='#'>
+                            <div className="link-box">
+                                <div className="plus-circle item-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                         <path d="M10 6.66667V10M10 10V13.3333M10 10H13.3333M10 10H6.66667M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C14.1421 2.5 17.5 5.85786 17.5 10Z" stroke="#363A3D" strokeWidth="1.5" strokeLinecap="round"/>
                                     </svg>
                                 </div>
-                                <div className="navbar-item">
+                                <div style={{color: 'var(--noble-black-400, #686B6E)'}} className="navbar-item">
                                     Add new subject
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div className='footer'>
                 <div className="user">
-                    <div className="user-1">
-                        <a href='#'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                <path d="M46.4849 24.0066C46.4849 29.9737 44.1145 35.6964 39.8951 39.9158C35.6757 44.1352 29.953 46.5056 23.9859 46.5056C18.0188 46.5056 12.296 44.1352 8.07664 39.9158C3.85725 35.6964 1.48682 29.9737 1.48682 24.0066C1.48682 18.0394 3.85725 12.3167 8.07664 8.09732C12.296 3.87793 18.0188 1.5075 23.9859 1.5075C29.953 1.5075 35.6757 3.87793 39.8951 8.09732C44.1145 12.3167 46.4849 18.0394 46.4849 24.0066ZM43.3153 21.3647C42.2371 13.7409 36.9046 7.47656 29.4871 5.30156C20.6718 2.71687 11.2134 6.64031 6.85775 14.7103C3.40025 21.1172 3.78369 28.8534 7.84025 34.9087C7.84414 34.9145 7.84922 34.9193 7.85513 34.9228C7.86104 34.9264 7.86764 34.9286 7.87445 34.9293C7.88126 34.9301 7.88811 34.9293 7.89452 34.927C7.90093 34.9247 7.90673 34.9211 7.9115 34.9163C16.8243 25.905 31.169 25.9022 40.0668 34.8956C40.0747 34.9038 40.0842 34.9101 40.0949 34.914C40.1055 34.918 40.1169 34.9195 40.1281 34.9184C40.1394 34.9173 40.1503 34.9137 40.16 34.9078C40.1697 34.9019 40.1779 34.8939 40.184 34.8844C42.8184 30.8681 43.9884 26.1234 43.3153 21.3647Z" fill="#686B6E"/>
-                                <path d="M24.0009 25.4925C28.9673 25.4925 32.9934 21.4664 32.9934 16.5C32.9934 11.5336 28.9673 7.5075 24.0009 7.5075C19.0345 7.5075 15.0084 11.5336 15.0084 16.5C15.0084 21.4664 19.0345 25.4925 24.0009 25.4925Z" fill="#686B6E"/>
-                            </svg>
-                        </a>
-                        <div className="email">
-                            {user ? user.email : 'Unauthorized'}
-                        </div>
+                    <a href='#'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M46.4849 24.0066C46.4849 29.9737 44.1145 35.6964 39.8951 39.9158C35.6757 44.1352 29.953 46.5056 23.9859 46.5056C18.0188 46.5056 12.296 44.1352 8.07664 39.9158C3.85725 35.6964 1.48682 29.9737 1.48682 24.0066C1.48682 18.0394 3.85725 12.3167 8.07664 8.09732C12.296 3.87793 18.0188 1.5075 23.9859 1.5075C29.953 1.5075 35.6757 3.87793 39.8951 8.09732C44.1145 12.3167 46.4849 18.0394 46.4849 24.0066ZM43.3153 21.3647C42.2371 13.7409 36.9046 7.47656 29.4871 5.30156C20.6718 2.71687 11.2134 6.64031 6.85775 14.7103C3.40025 21.1172 3.78369 28.8534 7.84025 34.9087C7.84414 34.9145 7.84922 34.9193 7.85513 34.9228C7.86104 34.9264 7.86764 34.9286 7.87445 34.9293C7.88126 34.9301 7.88811 34.9293 7.89452 34.927C7.90093 34.9247 7.90673 34.9211 7.9115 34.9163C16.8243 25.905 31.169 25.9022 40.0668 34.8956C40.0747 34.9038 40.0842 34.9101 40.0949 34.914C40.1055 34.918 40.1169 34.9195 40.1281 34.9184C40.1394 34.9173 40.1503 34.9137 40.16 34.9078C40.1697 34.9019 40.1779 34.8939 40.184 34.8844C42.8184 30.8681 43.9884 26.1234 43.3153 21.3647Z" fill="#686B6E"/>
+                            <path d="M24.0009 25.4925C28.9673 25.4925 32.9934 21.4664 32.9934 16.5C32.9934 11.5336 28.9673 7.5075 24.0009 7.5075C19.0345 7.5075 15.0084 11.5336 15.0084 16.5C15.0084 21.4664 19.0345 25.4925 24.0009 25.4925Z" fill="#686B6E"/>
+                        </svg>
+                    </a>
+                    <div className="text-label">
+                        {user ? user.email : 'Unauthorized'}
                     </div>
-                    <div className="cog">
+                    <div className="icon">
                         <a href='#'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10Z" stroke="#686B6E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
