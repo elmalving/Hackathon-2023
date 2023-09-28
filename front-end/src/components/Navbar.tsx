@@ -5,7 +5,7 @@ import { User } from '../types.js'
 import '../css/style.css'
 
 const Navbar = () => {
-    const [user, setUser] = useState<User>({'id': 'Unauthorized', 'email': 'Unauthorized'});
+    const [user, setUser] = useState<User | null>(null);
     const [isCollapsed, setCollapsed] = useState(false); 
     const currentPage = useLocation()['pathname'];
 
@@ -277,7 +277,7 @@ const Navbar = () => {
                             </svg>
                         </a>
                         <div className="email">
-                            {user.email}
+                            {user ? user.email : 'Unauthorized'}
                         </div>
                     </div>
                     <div className="cog">
