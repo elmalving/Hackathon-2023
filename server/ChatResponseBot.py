@@ -29,7 +29,6 @@ class SearchAssistant:
             json_data = response.json()
             results_prompts = [f"{result['url']}" for result in json_data["webPages"]["value"]]
 
-            #self.urls = json_data["webPages"]["value"]
             self.urls_to_json(results_prompts)
 
             return self.urls_json
@@ -108,8 +107,6 @@ class ChatGPT_Assistant:
 
 
     def answer_question(self, question):
-        #extracted_topic = self.extract_topic(question)
-
         assistant_prompt = "Switch to study assistant mode and don't participate in non-study related conversations. Set the temperature to 0, answer as accurately as possible. If you can't answer, type I dont know answer on this question, I'm sorry. "
         prompt = f"{assistant_prompt}\n\n{question}?"
 
@@ -130,27 +127,22 @@ class ChatGPT_Assistant:
 
         if "I'm sorry" in answer:
             self.current_answer = "Bot was unable to provide a satisfactory answer."
-            print("Bot was unable to provide a satisfactory answer.")
             return
 
         self.current_answer = answer
 
-        print(answer)
-#
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-# Создаем объекты классов
-search_assistant = SearchAssistant(openai_api_key, bing_search_api_key)
-test_generator = TestGenerator(openai_api_key, bing_search_api_key)
-chatgpt_assistant = ChatGPT_Assistant(openai_api_key, bing_search_api_key)
+# # Создаем объекты классов:
+# search_assistant = SearchAssistant(openai_api_key, bing_search_api_key)
+# test_generator = TestGenerator(openai_api_key, bing_search_api_key)
+# chatgpt_assistant = ChatGPT_Assistant(openai_api_key, bing_search_api_key)
 
-# Пример использования:
-question = input("What is your question? ")
-chatgpt_assistant.answer_question(question)
-extracted_topic = chatgpt_assistant.extract_topic(question)
-print(test_generator.create_test_json(extracted_topic))
-search_assistant.search(extracted_topic)
-print(search_assistant.urls_json)
-
-
+# # Пример использования:
+# question = input("What is your question? ")
+# chatgpt_assistant.answer_question(question)
+# extracted_topic = chatgpt_assistant.extract_topic(question)
+# print(test_generator.create_test_json(extracted_topic))
+# search_assistant.search(extracted_topic)
+# print(search_assistant.urls_json)
