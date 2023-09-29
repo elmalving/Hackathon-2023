@@ -1,10 +1,13 @@
+body {
+    margin: 0;
+}
+
 .container {
     display: flex;
-    width: calc(100%- 24px);
-    height: calc(100vh - 40px);
-    padding: 12px;
-    align-items: flex-start;
-    gap: 12px;
-    border-radius: 24px;
+    width: calc(100% - 2.4vh);
+    height: calc(100vh - 2.4vh);
+    padding: 1.2vh;
+    gap: 1.2vh;
+    border-radius: 2.4vh;
     background: var(--noble-black-700, #131619);
 }

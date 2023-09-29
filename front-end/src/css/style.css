@@ -73,7 +73,7 @@ a {
     align-items: flex-start;
     justify-content: space-between;
     align-self: stretch;
-    border-radius: 20px;
+    border-radius: 2.4vh;
     background: var(--noble-black-800, #0D0F10);
     overflow-y: scroll;
 }
@@ -238,9 +238,9 @@ a {
 
 .content {
     display: flex;
-    flex: 4;
+    flex: 6;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     align-self: stretch;
     overflow: hidden;
 }
