@@ -1,0 +1,121 @@
+.login-page {
+    display: flex;
+    flex: 1;
+}
+
+.align-left {
+    display: flex;
+    width: 100%;
+}
+
+.padding {
+    padding: 2%;
+}
+
+.align-center {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.row-gap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2vh;
+    align-self: stretch;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    gap: 5.5vh;
+    overflow-y: scroll;
+}
+
+.login-welcome {
+    color: #FFF;
+    font-family: Plus Jakarta Sans;
+    font-size: 225%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 122%;
+    overflow-wrap: break-word;
+}
+
+.login-welcome-text {
+    color: #9B9C9E;
+    font-family: Plus Jakarta Sans;
+    font-size: 112.5%;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 155%;
+    letter-spacing: 0.15px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+}
+
+.input-container {
+    display: flex;
+    height: 48px;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    background: #1A1D21;
+    border: 1px solid var(--noble-black-500, #363A3D);
+}
+.input-container:focus-within {
+    border: 1px solid var(--gradients-blue-green-500, #82DBF7);
+    box-shadow: 0px 0px 0px 4px rgba(132, 220, 245, 0.24);
+}
+
+.hint {
+    padding: 0 2%;
+}
+
+.login-input {
+    border-radius: 8px;
+}
+.login-input::placeholder {
+    color: #9B9C9E;
+    font-family: Plus Jakarta Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+}
+
+.submit-button {
+    display: flex;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--stem-green-500, #B6F09C);
+}
+.submit-label {
+    color: #0C1132;
+    font-family: Plus Jakarta Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+}
+
+.sunset {
+    width: 50%;
+    height: 100%;
+    opacity: .8;
+    background: url('./sunset.png') no-repeat center/cover, lightgray;
+    filter: blur(.2vh);
+}
