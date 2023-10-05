@@ -30,11 +30,13 @@
 .login-content {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 74%;
     height: 100%;
     justify-content: center;
     gap: 5.5vh;
     overflow-y: scroll;
+    padding: 0 2%;
+    box-sizing: border-box;
 }
 
 .login-welcome {
