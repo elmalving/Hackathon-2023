@@ -8,15 +8,12 @@
     width: 100%;
 }
 
-.padding {
-    padding: 2%;
-}
-
 .align-center {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .row-gap {
@@ -34,28 +31,26 @@
     height: 100%;
     justify-content: center;
     gap: 5.5vh;
-    overflow-y: scroll;
-    padding: 0 2%;
     box-sizing: border-box;
 }
 
 .login-welcome {
     color: #FFF;
     font-family: Plus Jakarta Sans;
-    font-size: 225%;
+    font-size: 2em;
     font-style: normal;
     font-weight: 400;
-    line-height: 122%;
+    line-height: 1.2;
     overflow-wrap: break-word;
 }
 
 .login-welcome-text {
     color: #9B9C9E;
     font-family: Plus Jakarta Sans;
-    font-size: 112.5%;
+    font-size: 1em;
     font-style: normal;
     font-weight: 500;
-    line-height: 155%;
+    line-height: 1.5;
     letter-spacing: 0.15px;
 }
 
@@ -92,8 +87,67 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 150%;
+    line-height: 1.5;
     letter-spacing: 0.15px;
+}
+
+.input-misc {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.remember-container {
+    display: flex;
+    align-items: center;
+    gap: .5vw;
+}
+
+#remember-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	appearance: none;
+    padding: 12px;
+    border-radius: 10%;;
+    background: #1A1D21;
+    border: 1px solid var(--noble-black-500, #363A3D);
+	position: relative;
+}
+#remember-checkbox:checked {
+    background: #363A3D;
+}
+#remember-checkbox:checked::before {
+	content: '\2714';
+	position: absolute;
+	color: #99a1a7;
+}
+
+.remember-label {
+    color: var(--Noble-Black-200, #CDCECF);
+    font-family: Plus Jakarta Sans;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+}
+
+.font-gradient {
+    font-family: Plus Jakarta Sans;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.15px;
+    background: var(--gradients-blue-green-500, linear-gradient(45deg, #82DBF7 0%, #B6F09C 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.font-gradient:hover {
+    background: var(--gradients-blue-green-500, linear-gradient(45deg, #44caf3 0%, #80ee4e 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 .submit-button {
@@ -104,6 +158,7 @@
     border-radius: 12px;
     background: var(--stem-green-500, #B6F09C);
 }
+
 .submit-label {
     color: #0C1132;
     font-family: Plus Jakarta Sans;
@@ -111,6 +166,55 @@
     font-style: normal;
     font-weight: 600;
     line-height: 150%;
+    letter-spacing: 0.15px;
+}
+
+.space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divide-line {
+    display: flex;
+    width: 37%;
+    height: 1px;
+    background: #363A3D;
+}
+
+.divider-label {
+    color: var(--Noble-Black-400, #686B6E);
+    font-family: Plus Jakarta Sans;
+    font-size: 75%;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+    text-align: center;
+}
+
+.social-container {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--Noble-Black-600, #1A1D21);
+    width: 45%;
+    height: 48px;
+    gap: 0.8vw;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+}
+
+.font-social {
+    color: var(--Noble-Black-400, #686B6E);
+    font-family: Plus Jakarta Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
     letter-spacing: 0.15px;
 }
 

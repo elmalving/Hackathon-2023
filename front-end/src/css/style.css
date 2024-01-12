@@ -241,7 +241,7 @@ a {
     flex-direction: column;
     align-items: center;
     align-self: stretch;
-    padding: 1.2vh;
+    padding: 3vw;
     overflow: hidden;
 }
 
