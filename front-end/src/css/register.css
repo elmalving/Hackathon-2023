@@ -1,0 +1,9 @@
+.register-page {
+    display: flex;
+    flex: 1;
+}
+
+.illustration {
+    width: 40%;
+    background: url('./illustration.png') no-repeat center/cover, lightgray;
+}

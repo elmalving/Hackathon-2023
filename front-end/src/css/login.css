@@ -220,8 +220,5 @@
 
 .sunset {
     width: 50%;
-    height: 100%;
-    opacity: .8;
     background: url('./sunset.png') no-repeat center/cover, lightgray;
-    filter: blur(.2vh);
 }

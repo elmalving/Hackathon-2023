@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import httpClient from "../httpClient";
 import { Link, useLocation } from 'react-router-dom';
-import { User } from '../types.js'
-import '../css/style.css'
+import { User } from '../types.js';
+import '../css/style.css';
 
 const Navbar = () => {
     const [user, setUser] = useState<User | null>(null);

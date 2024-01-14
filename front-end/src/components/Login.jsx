@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import httpClient from "../httpClient";
-import '../css/login.css'
+import { Link } from 'react-router-dom';
+import '../css/login.css';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -121,10 +122,10 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="align-left font-social">
-                    Don't have an account?&nbsp;<span className="font-gradient">Sign Up</span>
+                    Don't have an account?&nbsp;<Link className="font-gradient" to={'/register'}>Sign Up</Link>
                 </div>
             </div>
-            <div className="sunset"></div>
+            <div className="bg-image sunset"></div>
         </div>
     );
 }

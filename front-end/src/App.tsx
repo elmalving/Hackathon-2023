@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements, Outlet, useNavigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Chat from './components/Chat';
 import Schedule from './components/Schedule';
@@ -32,6 +32,7 @@ function App() {
 const Roote = () => {
     const [user, setUser] = useState<User | null>(null);
     const navigate = useNavigate();
+    const currentPage = useLocation()['pathname'];
 
     // const logoutUser = async () => {
     //     try {
@@ -44,9 +45,8 @@ const Roote = () => {
     // <div>
     //     <button onClick={logoutUser}>Logout</button>
     // </div>
-
     useEffect(() => {
-        user === null && navigate('/login');
+        user === null && currentPage != '/register' && navigate('/login');
         (async () => {
             try {
                 const response = await httpClient.get('//localhost:5000/@me');
@@ -61,7 +61,7 @@ const Roote = () => {
     return (
         <div className='container'>
             {user === null ? (
-                <Login />
+                <Outlet />
             ) : (
                 <>
                 <Navbar />

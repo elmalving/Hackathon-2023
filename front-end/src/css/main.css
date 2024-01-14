@@ -1,5 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+
 body {
     margin: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+button, input {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .container {
