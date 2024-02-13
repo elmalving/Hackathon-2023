@@ -216,7 +216,7 @@
 
 .content {
     display: flex;
-    flex: 6;
+    flex: 3;
     flex-direction: column;
     align-items: center;
     align-self: stretch;

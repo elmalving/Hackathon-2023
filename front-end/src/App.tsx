@@ -34,25 +34,20 @@ const Roote = () => {
     const navigate = useNavigate();
     const currentPage = useLocation()['pathname'];
 
-    // const logoutUser = async () => {
-    //     try {
-    //         await httpClient.post('//localhost:5000/logout');
-    //         location.reload();
-    //     } catch (error) {
-    //         console.log('Server error.');
-    //     }
-    // }
-    // <div>
-    //     <button onClick={logoutUser}>Logout</button>
-    // </div>
     useEffect(() => {
-        user === null && currentPage != '/register' && navigate('/login');
         (async () => {
             try {
                 const response = await httpClient.get('//localhost:5000/@me');
-
+                if (currentPage == '/login' || currentPage == '/register')
+                {
+                    window.location.href = '/';
+                }
                 setUser(response.data);
             } catch (error) {
+                if (currentPage != '/register')
+                {
+                    navigate('/login');
+                }
                 console.log('Not authenticated');
             }
         })();
