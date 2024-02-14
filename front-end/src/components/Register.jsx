@@ -9,8 +9,13 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [degree, setDegree] = useState("");
+    const [termsChecked, setTerms] = useState(false);
 
     const signUpUser = async () => {
+        if (!termsChecked)
+        {
+            return;
+        }
         try {
             const response = await httpClient.post('//localhost:5000/register', {
                 email,
@@ -60,6 +65,7 @@ const Register = () => {
                                                 value={firstName}
                                                 onChange={(e) => setfirstName(e.target.value)}
                                                 className="input login-input"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -73,6 +79,7 @@ const Register = () => {
                                                 value={lastName}
                                                 onChange={(e) => setlastName(e.target.value)}
                                                 className="input login-input"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -90,6 +97,7 @@ const Register = () => {
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 className="input login-input"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -103,6 +111,7 @@ const Register = () => {
                                                 value={password}
                                                 onChange={(e) => setPassword(e.target.value)}
                                                 className="input login-input"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -116,7 +125,9 @@ const Register = () => {
                                             id="degree"
                                             value={degree}
                                             onChange={(e) => setDegree(e.target.value)}
-                                            className="select">
+                                            className="select"
+                                            required
+                                            >
                                             <option defaultValue={''} disabled hidden></option>
                                             <option value="Elementary">Elementary education</option>
                                             <option value="Upper">Upper secondary education</option>
@@ -127,7 +138,13 @@ const Register = () => {
                             </div>
                             <div className="input-misc">
                                 <div className="remember-container">
-                                    <input type="checkbox" id="remember-checkbox" name="remember"/>
+                                    <input 
+                                    type="checkbox" 
+                                    id="remember-checkbox" 
+                                    onChange={() => setTerms(!termsChecked)}
+                                    checked={termsChecked}
+                                    required
+                                    />
                                     <label className="remember-label" htmlFor="remember-checkbox">
                                         I agree with&nbsp;
                                         <a className="font-gradient" target="_blank" href="https://github.com/elmalving/Hackathon-2023/blob/main/LICENSE">

@@ -9,11 +9,9 @@ def get_uuid():
 
 
 class User(db.Document):
-    __tablename__ = "users"
-
-    id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
-    email = db.Column(db.String(345), unique=True)
-    password = db.Column(db.Text, nullable=False)
-    name = db.Column(db.String(50), nullable=False)
-    surname = db.Column(db.String(50), nullable=False)
-    degree = db.Column(db.String(30), nullable=False)
+    id = db.StringField(primary_key=True, default=get_uuid)
+    email = db.EmailField(max_length=345, unique=True)
+    password = db.StringField(required=True)
+    name = db.StringField(max_length=50, required=True)
+    surname = db.StringField(max_length=50, required=True)
+    degree = db.StringField(max_length=30, required=True)

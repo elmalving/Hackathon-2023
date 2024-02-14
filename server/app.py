@@ -3,7 +3,7 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
 from config import ApplicationConfig
-from models import db, User
+from documents import db, User
 from ChatResponseBot import SearchAssistant, ChatGPT_Assistant, TestGenerator
 
 openai_api_key = "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"
@@ -15,7 +15,6 @@ test_generator = TestGenerator(openai_api_key, bing_search_api_key)
 chatgpt_assistant = ChatGPT_Assistant(openai_api_key, bing_search_api_key)
 
 
-
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
 
@@ -24,9 +23,6 @@ CORS(app, supports_credentials=True)
 server_session = Session(app)
 db.init_app(app)
 
-with app.app_context():
-    db.create_all()
-
 
 @app.route('/@me')
 def get_current_user():
@@ -34,7 +30,7 @@ def get_current_user():
     if user_id is None:
         return jsonify({'error': 'Unauthorized'}), 401
 
-    user = User.query.filter_by(id=user_id).first()
+    user = User.objects(id=user_id).first()
     return jsonify({
         'id': user.id,
         'email': user.email,
@@ -50,15 +46,14 @@ def register_user():
     surname = request.json['lastName']
     degree = request.json['degree']
 
-    user_exists = User.query.filter_by(email=email).first() is not None
+    user_exists = User.objects(email=email).first() is not None
 
     if user_exists:
         return jsonify({'error': 'Email is already used'}), 409
 
     hashed_password = bcrypt.generate_password_hash(password)
     new_user = User(email=email, password=hashed_password, name=name, surname=surname, degree=degree)
-    db.session.add(new_user)
-    db.session.commit()
+    new_user.save()
 
     session['user_id'] = new_user.id
 
@@ -73,7 +68,7 @@ def login_user():
     email = request.json['email']
     password = request.json['password']
 
-    user = User.query.filter_by(email=email).first()
+    user = User.objects(email=email).first()
 
     if user is None or not bcrypt.check_password_hash(user.password, password):
         return jsonify({'error': 'Unauthorized'}), 401

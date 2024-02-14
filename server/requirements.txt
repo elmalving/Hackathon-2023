@@ -1,8 +1,9 @@
 flask
-flask-sqlalchemy
+git+https://github.com/idoshr/flask-mongoengine.git@1.0.1
 flask-bcrypt
 python-dotenv
 flask-session
 redis
 flask-cors
+requests
 openai

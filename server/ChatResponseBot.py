@@ -2,7 +2,6 @@ import openai
 import requests
 import json
 import dotenv
-from flask import Flask
 
 dotenv.load_dotenv()
 
