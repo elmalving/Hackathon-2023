@@ -1,14 +1,14 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_mongoengine import MongoEngine
 from uuid import uuid4
 
-db = SQLAlchemy()
+db = MongoEngine()
 
 
 def get_uuid():
     return uuid4().hex
 
 
-class User(db.Model):
+class User(db.Document):
     __tablename__ = "users"
 
     id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
