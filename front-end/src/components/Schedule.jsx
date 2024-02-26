@@ -1,6 +1,12 @@
 import React from "react";
 import '../css/schedule.css'
 
+const createAssignment = (e) => {
+    e.target.id;
+}
+
+const daysOfWeek = ['Monday', 'Thursday', 'Wednesday', 'Tuesday', 'Friday', 'Saturday', 'Sunday'];
+
 const Schedule = () => {
     return (
         <div className="content">
@@ -15,155 +21,27 @@ const Schedule = () => {
                     <div className="day">Sun</div>
                 </div>
                 <div className="row-container">
-                    <div className="row">
-                        <div className="time">07:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">08:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">09:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">10:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">11:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">12:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">13:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">14:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">15:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">16:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">17:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">18:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">19:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
-                    <div className="row">
-                        <div className="time">20:00</div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                        <div className="rect"></div>
-                    </div>
+                    {[...Array(14)].map(
+                        (_, outer_index) => (
+                            <div key={outer_index + 7} className="row">
+                            <div className="time">{outer_index + 7}:00</div>
+                            {[...Array(7)].map(
+                                (_, index) => (
+                                <div key={index} id={daysOfWeek[index] + '_' + (outer_index + 7)} onClick={createAssignment} className="rect"></div>
+                                ))
+                            }
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
             <div className="model-container">
                 <div className="model-row">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M26.9063 19.3115L26.8913 19.3202C26.8829 19.3252 26.8788 19.3325 26.8788 19.3421L26.8763 20.2796" stroke="#794AFF" stroke-width="2"/>
-                        <path d="M26.5844 28.6069C26.4486 28.9648 26.2671 29.3262 26.04 29.6912" stroke="#794AFF" stroke-width="2"/>
-                        <path d="M5.94815 29.6888C5.73899 29.3492 5.56232 29 5.41815 28.6413C5.40503 28.6081 5.38878 28.5981 5.35815 28.5831" stroke="#794AFF" stroke-width="2"/>
-                        <path d="M5.06189 20.2912C5.06689 20.2862 5.0746 20.2825 5.08501 20.28C5.09876 20.2767 5.10564 20.2677 5.10564 20.2531L5.10814 19.3087" stroke="#794AFF" stroke-width="2"/>
+                        <path d="M26.9063 19.3115L26.8913 19.3202C26.8829 19.3252 26.8788 19.3325 26.8788 19.3421L26.8763 20.2796" stroke="#794AFF" strokeWidth="2"/>
+                        <path d="M26.5844 28.6069C26.4486 28.9648 26.2671 29.3262 26.04 29.6912" stroke="#794AFF" strokeWidth="2"/>
+                        <path d="M5.94815 29.6888C5.73899 29.3492 5.56232 29 5.41815 28.6413C5.40503 28.6081 5.38878 28.5981 5.35815 28.5831" stroke="#794AFF" strokeWidth="2"/>
+                        <path d="M5.06189 20.2912C5.06689 20.2862 5.0746 20.2825 5.08501 20.28C5.09876 20.2767 5.10564 20.2677 5.10564 20.2531L5.10814 19.3087" stroke="#794AFF" strokeWidth="2"/>
                         <path d="M12.4563 0H19.55C20.7113 0.103125 21.5319 1.01 21.5319 2.15625C21.5323 2.74292 21.5319 3.32188 21.5306 3.89313C21.5306 3.90659 21.5342 3.91986 21.541 3.93159C21.5478 3.94333 21.5576 3.95312 21.5694 3.96C24.5694 5.67438 26.5581 8.71 26.8413 12.1725C26.8638 12.4479 26.875 12.8644 26.875 13.4219C26.875 15.3652 26.875 17.3083 26.875 19.2512C26.875 19.2662 26.8804 19.2787 26.8913 19.2887C26.8983 19.295 26.9033 19.3025 26.9063 19.3113L26.8913 19.32C26.8829 19.325 26.8788 19.3323 26.8788 19.3419L26.8763 20.2794C26.8754 22.5769 26.8748 24.8731 26.8744 27.1681C26.874 27.5377 26.7773 28.0173 26.5844 28.6069C26.4486 28.9648 26.2671 29.3263 26.04 29.6912C24.9781 31.1012 23.7475 31.8838 21.9494 32H10.0438C8.25439 31.8888 6.99626 31.0875 5.94814 29.6887C5.73897 29.3492 5.56231 29 5.41814 28.6413C5.40501 28.6081 5.38876 28.5981 5.35814 28.5831C5.36522 28.5823 5.37147 28.5806 5.37689 28.5781C5.39064 28.5715 5.39501 28.5608 5.39001 28.5462C5.20293 27.9954 5.10939 27.506 5.10939 27.0781C5.10939 24.831 5.10939 22.584 5.10939 20.3369C5.10939 20.3181 5.10043 20.3054 5.08251 20.2987L5.06189 20.2913C5.06689 20.2863 5.0746 20.2825 5.08501 20.28C5.09876 20.2767 5.10564 20.2677 5.10564 20.2531L5.10814 19.3088C5.10939 17.3575 5.10981 15.4056 5.10939 13.4531C5.10939 12.8873 5.11981 12.4708 5.14064 12.2037C5.41376 8.725 7.40751 5.67188 10.4381 3.95C10.4569 3.93917 10.4665 3.92292 10.4669 3.90125C10.4711 3.30417 10.4715 2.71167 10.4681 2.12375C10.4613 0.946875 11.3281 0.129375 12.4563 0ZM15.0006 2.64937C17.0169 2.55625 18.7181 2.695 20.5256 3.44563C20.5298 3.4474 20.5342 3.44811 20.5387 3.4477C20.5432 3.4473 20.5474 3.44579 20.5512 3.4433C20.5549 3.44082 20.5579 3.43744 20.56 3.43348C20.5621 3.42952 20.5632 3.4251 20.5631 3.42062C20.5613 2.89875 20.6413 2.12375 20.4756 1.68813C20.2506 1.09438 19.7606 0.968125 19.1431 0.96875C17.0311 0.96875 14.9188 0.96875 12.8063 0.96875C11.1594 0.969375 11.4344 2.29062 11.4381 3.4225C11.4381 3.44583 11.4488 3.45292 11.47 3.44375C12.5988 2.97042 13.7756 2.70563 15.0006 2.64937ZM10.3131 31.0413H21.6906C22.817 31.0413 23.8972 30.5938 24.6936 29.7974C25.4901 29.0009 25.9375 27.9207 25.9375 26.7944V13.1838C25.9375 11.9245 25.6946 10.6777 25.2227 9.51429C24.7508 8.35093 24.0591 7.29388 23.1871 6.40348C21.426 4.60524 19.0374 3.595 16.5469 3.595H15.4569C12.9663 3.595 10.5778 4.60524 8.81671 6.40348C7.05563 8.20172 6.06626 10.6407 6.06626 13.1838V26.7944C6.06626 27.9207 6.5137 29.0009 7.31015 29.7974C8.10659 30.5938 9.1868 31.0413 10.3131 31.0413Z" fill="#794AFF"/>
                         <path d="M8.81375 15.2825C8.74726 15.2825 8.68143 15.2694 8.62001 15.244C8.55859 15.2185 8.50278 15.1812 8.45577 15.1342C8.40876 15.0872 8.37147 15.0314 8.34603 14.97C8.32059 14.9086 8.3075 14.8427 8.3075 14.7763V13.0181C8.3075 11.0597 9.08542 9.18143 10.4701 7.79659C11.8549 6.41175 13.733 5.63376 15.6912 5.63376H16.3125C18.2708 5.63376 20.1489 6.41175 21.5336 7.79659C22.9183 9.18143 23.6962 11.0597 23.6962 13.0181V14.7763C23.6962 14.9105 23.6429 15.0393 23.548 15.1342C23.453 15.2292 23.3243 15.2825 23.19 15.2825H8.81375ZM9.31187 14.325L22.6856 14.3013C22.6969 14.3013 22.7077 14.2968 22.7157 14.2888C22.7236 14.2808 22.7281 14.27 22.7281 14.2588L22.7256 13.02C22.7241 12.1756 22.5564 11.3398 22.232 10.5602C21.9076 9.78065 21.4329 9.07264 20.8349 8.47661C20.237 7.88057 19.5275 7.40818 18.747 7.08641C17.9666 6.76463 17.1304 6.59978 16.2862 6.60126L15.6837 6.60251C14.8396 6.60398 14.004 6.77176 13.2247 7.09626C12.4453 7.42077 11.7375 7.89564 11.1417 8.49376C10.5458 9.09189 10.0736 9.80156 9.75187 10.5822C9.4302 11.3629 9.26539 12.1994 9.26687 13.0438L9.26937 14.2825C9.26937 14.2938 9.27385 14.3046 9.28182 14.3126C9.28979 14.3205 9.3006 14.325 9.31187 14.325Z" fill="#794AFF"/>
                         <path d="M18.3094 12.0013C15.8498 11.9983 13.3906 11.9981 10.9319 12.0006C10.7169 12.0006 10.5623 11.9727 10.4681 11.9169C10.1887 11.7513 10.195 11.2519 10.4987 11.0931C10.5779 11.0519 10.6998 11.0313 10.8644 11.0313C14.2881 11.0325 17.7125 11.0238 21.1369 11.0331C21.945 11.035 21.9244 11.9988 21.17 11.9994C20.5616 11.9998 19.9535 12 19.3456 12C19.3239 12 19.3131 12.0108 19.3131 12.0325C19.3119 12.3144 19.3694 12.8319 19.2656 13.0788C19.1044 13.4644 18.5506 13.4669 18.385 13.0794C18.2856 12.8475 18.345 12.3025 18.3425 12.0344C18.3425 12.0123 18.3314 12.0013 18.3094 12.0013Z" fill="#794AFF"/>

@@ -42,6 +42,7 @@
     height: 7vh;
     border-radius: .5vh;
     border: .2vh solid var(--light-grey, #C6C6C6);
+    cursor: pointer;
 }
 
 .day-container {

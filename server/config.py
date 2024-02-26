@@ -10,7 +10,8 @@ class ApplicationConfig:
 
     MONGODB_SETTINGS = {
         'db': 'db',
-        'host': 'mongodb://localhost:27017/'
+        'host': 'localhost',
+        'port': 27017
     }
 
     SESSION_TYPE = 'redis'
