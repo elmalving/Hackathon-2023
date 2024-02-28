@@ -16,8 +16,9 @@ class Assignment(db.Document):
     subject = db.StringField(max_length=50, required=True)
     difficulty = db.StringField(max_length=30, required=True)
     text = db.StringField(max_length=400, required=True)
-    time_todo = db.IntField(required=True)
-    assigned_date = db.DateTimeField(default=datetime.now().strftime("%d-%m-%y %H:%M"))
+    url = db.StringField(max_length=100)
+    assigned_date = db.DateTimeField(default=datetime.now)
+    rect = db.StringField(max_length=10, required=True, unique=True)
 
 
 class User(db.Document):
@@ -27,4 +28,4 @@ class User(db.Document):
     name = db.StringField(max_length=50, required=True)
     surname = db.StringField(max_length=50, required=True)
     degree = db.StringField(max_length=30, required=True)
-    assignment = ListField(ReferenceField(Assignment))
+    assignments = ListField(ReferenceField(Assignment))

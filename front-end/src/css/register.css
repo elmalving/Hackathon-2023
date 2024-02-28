@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@700&display=swap');
-
 .register-page {
     display: flex;
     flex: 1;
@@ -8,12 +6,17 @@
 .studymate-container {
     display: flex;
     width: 100%;
-    text-align: right;
 }
 
 .align-right {
     display: inline-block;
     width: 100%;
+    text-align: right;
+    margin-left: auto;
+}
+
+.align-middle {
+    display: inline-block;
     margin: auto 0;
 }
 

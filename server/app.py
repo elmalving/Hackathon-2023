@@ -3,7 +3,7 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
 from config import ApplicationConfig
-from documents import db, User
+from documents import db, User, Assignment
 from ChatResponseBot import SearchAssistant, ChatGPT_Assistant, TestGenerator
 
 openai_api_key = "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"
@@ -36,6 +36,58 @@ def get_current_user():
         'email': user.email,
         'name': user.name
     })
+
+
+@app.route('/@assignment')
+def get_assignment():
+    user_id = session.get('user_id')
+    if user_id is None:
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    user = User.objects(id=user_id).first()
+
+    assignments = [
+        {
+            'id': assignment.id,
+            'subject': assignment.subject,
+            'difficulty': assignment.difficulty,
+            'text': assignment.text,
+            'url': assignment.url,
+            'assigned_date': assignment.assigned_date.isoformat(),
+            'rect': assignment.rect
+        }
+        for assignment in user.assignments
+    ]
+
+    return jsonify({
+        'assignments': assignments
+    })
+
+
+@app.route('/add_assignment', methods=['POST'])
+def add_assignment():
+    subject = request.json['subject']
+    difficulty = request.json['difficulty']
+    text = request.json['task']
+    url = request.json['url']
+    rect = request.json['rectId']
+
+    user_id = session.get('user_id')
+    if user_id is None:
+        return jsonify({'error': "Account doesn't exist"}), 401
+
+    user = User.objects(id=user_id).first()
+
+    if any(assignment.rect == rect for assignment in user.assignments):
+        return jsonify({'error': 'Rect is already occupied'}), 409
+
+    new_assignment = Assignment(subject=subject, difficulty=difficulty, text=text, url=url, rect=rect)
+    new_assignment.save()
+
+    user.assignments.append(new_assignment)
+    user.save()
+
+    return '200'
 
 
 @app.route('/register', methods=['POST'])

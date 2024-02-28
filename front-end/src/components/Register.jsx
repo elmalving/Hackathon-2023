@@ -12,12 +12,12 @@ const Register = () => {
     const [termsChecked, setTerms] = useState(false);
 
     const signUpUser = async () => {
-        if (!termsChecked)
+        if (!termsChecked || email == '' || password == '' || firstName == '' || lastName == '' || degree == '')
         {
             return;
         }
         try {
-            const response = await httpClient.post('//localhost:5000/register', {
+            await httpClient.post('//localhost:5000/register', {
                 email,
                 password,
                 firstName,
@@ -41,7 +41,7 @@ const Register = () => {
                     <div className="align-left">
                         <img src='./brand.svg' className="logo"/>
                     </div>
-                    <div className="align-right">
+                    <div className="align-right align-middle">
                         <Link className="font-gradient" to={'/login'}>Log In</Link>
                     </div>
                 </div>

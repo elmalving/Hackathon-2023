@@ -1,0 +1,21 @@
+.popUp-container {
+    flex-direction: column;
+    position: relative;
+    top: -250%;
+    left: -250%;
+    width: 38vh;
+    height: 38vh;
+    background-color: #0D0F10;
+    border-radius: 5%;
+    border: white solid 1px;
+    cursor: default;
+    padding: 0 2vh 2vh 2vh;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.close {
+    color: #FFF;
+    font-size: 250%;
+    height: 100%;
+}

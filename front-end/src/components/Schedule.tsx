@@ -1,13 +1,76 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import httpClient from "../httpClient.jsx";
+import AssignmentPopUp from './AssignmentPopUp.jsx';
+import { Assignment } from "../types.ts";
 import '../css/schedule.css'
 
-const createAssignment = (e) => {
-    e.target.id;
-}
-
-const daysOfWeek = ['Monday', 'Thursday', 'Wednesday', 'Tuesday', 'Friday', 'Saturday', 'Sunday'];
-
 const Schedule = () => {
+    const rowAmount = 7;
+    const columnAmount = 14;
+    const daysOfWeek = ['Monday', 'Thursday', 'Wednesday', 'Tuesday', 'Friday', 'Saturday', 'Sunday'];
+    const [divData, setDivData] = useState(Array.from({ length: columnAmount * rowAmount }, (_, index) => ({ id: index, subject: null, color: 'inherit', clicked: false })));
+    const [assignments, setAssignments] = useState<Assignment[]>([]);
+    const colors = {
+        'Math': {
+            'easy': '#B6F09C',
+            'medium': '#9EF37A',
+            'hard': '#49F300'
+        },
+        'Physics': {
+            'easy': '#D0302F',
+            'medium': '#D25930',
+            'hard': '#D27430'
+        },
+        'Czech Language': {
+            'easy': '#E26F20',
+            'medium': '#E45A20',
+            'hard': '#E44020'
+        },
+        'Geography': {
+            'easy': '#82DBF7',
+            'medium': '#83CDCD',
+            'hard': '#629A9A'
+        }
+    }
+
+    const createAssignment = (e) => {
+        if (!e.target.id || e.target.tagName != 'DIV') {
+            return;
+        }
+        setDivData(divData.map(div => {
+            if (div.id == e.target.id) {
+                div.clicked = true;
+            }
+            return div;
+        }));
+    }
+
+    const clearClicked = () => {
+        setDivData(divData.map(div => {
+            div.clicked = false;
+            return div;
+        }));
+    }
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await httpClient.get('//localhost:5000/@assignment');
+                setAssignments(response.data.assignments);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        })();
+    }, []);
+    
+    useEffect(() => {
+        assignments.forEach((assignment) => {
+            divData[assignment.rect].subject = assignment.subject;
+            divData[assignment.rect].color = colors[assignment.subject][assignment.difficulty];
+        });
+    }, [assignments]);
+
+
     return (
         <div className="content">
             <div className="schedule">
@@ -21,15 +84,29 @@ const Schedule = () => {
                     <div className="day">Sun</div>
                 </div>
                 <div className="row-container">
-                    {[...Array(14)].map(
+                    {[...Array(columnAmount)].map(
                         (_, outer_index) => (
-                            <div key={outer_index + 7} className="row">
-                            <div className="time">{outer_index + 7}:00</div>
-                            {[...Array(7)].map(
-                                (_, index) => (
-                                <div key={index} id={daysOfWeek[index] + '_' + (outer_index + 7)} onClick={createAssignment} className="rect"></div>
-                                ))
-                            }
+                            <div key={outer_index} className="row">
+                                <div className="time">{outer_index + rowAmount}:00</div>
+                                {[...Array(rowAmount)].map(
+                                    (_, index) => (
+                                    <div
+                                    style={{backgroundColor: divData[index + outer_index * rowAmount].color}}
+                                    key={index}
+                                    id={`${index + outer_index * rowAmount}`}
+                                    data-day={daysOfWeek[index]}
+                                    data-hour={outer_index + rowAmount}
+                                    onClick={createAssignment}
+                                    className="rect">
+                                        {divData[index + outer_index * rowAmount].subject ? 
+                                        <div className="centralized">
+                                            <span>
+                                                {divData[index + outer_index * rowAmount].subject}
+                                            </span>
+                                        </div> : ''}
+                                        {divData[index + outer_index * rowAmount].clicked ? <AssignmentPopUp onClose={clearClicked} rectId={`${index + outer_index * rowAmount}`} /> : ''}
+                                    </div>
+                                ))}
                             </div>
                         ))
                     }
