@@ -38,9 +38,7 @@ const Schedule = () => {
             return;
         }
         setDivData(divData.map(div => {
-            if (div.id == e.target.id) {
-                div.clicked = true;
-            }
+            div.clicked = div.id == e.target.id;
             return div;
         }));
     }
@@ -99,11 +97,11 @@ const Schedule = () => {
                                     onClick={createAssignment}
                                     className="rect">
                                         {divData[index + outer_index * rowAmount].subject ? 
-                                        <div className="centralized">
+                                        (<div className="centralized">
                                             <span>
                                                 {divData[index + outer_index * rowAmount].subject}
                                             </span>
-                                        </div> : ''}
+                                        </div>) : ''}
                                         {divData[index + outer_index * rowAmount].clicked ? <AssignmentPopUp onClose={clearClicked} rectId={`${index + outer_index * rowAmount}`} /> : ''}
                                     </div>
                                 ))}

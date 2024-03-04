@@ -4,7 +4,6 @@ import '../css/popUp.css';
 
 const AssignmentPopUp = (args) => {
     const containerRef = useRef(null);
-    const [closed, setClosed] = useState(false);
     const [subject, setSubject] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [task, setTask] = useState('');
@@ -57,10 +56,10 @@ const AssignmentPopUp = (args) => {
         }
     }
 
-    return closed ? '' : (
+    return (
         <div ref={containerRef} className="popUp-container">
             <div className="align-right">
-                <button onClick={() => {args.onClose(); setClosed(true);}} className="close">x</button>
+                <button onClick={args.onClose} className="close">x</button>
             </div>
         
             <form className="login-form">
@@ -128,7 +127,7 @@ const AssignmentPopUp = (args) => {
                         </div>
                     </div>
                 </div>
-                <button className='submit-button submit-label' type='button' onClick={() => createTask()}>
+                <button className='submit-button submit-label' type='button' onClick={createTask}>
                     Create task
                 </button>
             </form>
