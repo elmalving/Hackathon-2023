@@ -221,5 +221,5 @@
 
 .sunset {
     width: 50%;
-    background: url('./sunset.png') no-repeat center/cover, lightgray;
+    background: url('../../sunset.png') no-repeat center/cover, lightgray;
 }

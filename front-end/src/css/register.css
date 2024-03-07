@@ -89,5 +89,5 @@
 
 .illustration {
     width: 40%;
-    background: url('./illustration.png') no-repeat center/cover, lightgray;
+    background: url('../../illustration.png') no-repeat center/cover, lightgray;
 }

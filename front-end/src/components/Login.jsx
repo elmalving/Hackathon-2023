@@ -9,7 +9,7 @@ const Login = () => {
 
     const logInUser = async () => {
         try {
-            const response = await httpClient.post('//localhost:5000/login', {
+            await httpClient.post('//localhost:5000/login', {
                 email,
                 password,
             });

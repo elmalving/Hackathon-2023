@@ -75,7 +75,7 @@ const Schedule = () => {
                 <div className="day-container">
                     <div className="day">Mon</div>
                     <div className="day">Thu</div>
-                    <div className="day">Wen</div>
+                    <div className="day">Wed</div>
                     <div className="day">Thu</div>
                     <div className="day">Fri</div>
                     <div className="day">Sat</div>
