@@ -17,9 +17,9 @@ const Schedule = () => {
             'hard': '#49F300'
         },
         'Physics': {
-            'easy': '#D0302F',
+            'easy': '#D27430',
             'medium': '#D25930',
-            'hard': '#D27430'
+            'hard': '#D0302F'
         },
         'Czech Language': {
             'easy': '#E26F20',
@@ -34,7 +34,7 @@ const Schedule = () => {
     }
 
     const createAssignment = (e) => {
-        if (!e.target.id || e.target.tagName != 'DIV') {
+        if (!/^\d+$/.test(e.target.id)) { // isDigit method -_-
             return;
         }
         setDivData(divData.map(div => {
@@ -88,32 +88,37 @@ const Schedule = () => {
                     <div className="day">Sun</div>
                 </div>
                 <div className="row-container">
-                    {[...Array(columnAmount)].map(
-                        (_, outer_index) => (
-                            <div key={outer_index} className="row">
-                                <div className="time">{outer_index + rowAmount}:00</div>
-                                {[...Array(rowAmount)].map(
-                                    (_, index) => (
+                    {[...Array(columnAmount)].map((_, outer_index) => (
+                        <div key={outer_index} className="row">
+                            <div className="time">{outer_index + rowAmount}:00</div>
+                            {[...Array(rowAmount)].map((_, index) => {
+                                const rectId = index + outer_index * rowAmount;
+                                const divItem = divData[rectId];
+                                const assignment = assignments.find(assignment => assignment.rect === rectId);
+
+                                return (
                                     <div
-                                    style={{backgroundColor: divData[index + outer_index * rowAmount].color}}
-                                    key={index}
-                                    id={`${index + outer_index * rowAmount}`}
-                                    data-day={daysOfWeek[index]}
-                                    data-hour={outer_index + rowAmount}
-                                    onClick={createAssignment}
-                                    className="rect">
-                                        {divData[index + outer_index * rowAmount].subject ? 
-                                        (<div className="centralized">
-                                            <span>
-                                                {divData[index + outer_index * rowAmount].subject}
-                                            </span>
-                                        </div>) : ''}
-                                        {divData[index + outer_index * rowAmount].clicked ? <AssignmentPopUp onClose={clearClicked} rectId={`${index + outer_index * rowAmount}`} /> : ''}
+                                        key={index}
+                                        id={String(rectId)}
+                                        data-day={daysOfWeek[index]}
+                                        data-hour={outer_index + rowAmount}
+                                        onClick={createAssignment}
+                                        className="rect"
+                                        style={{ backgroundColor: divItem.color }}
+                                    >
+                                        {divItem.subject && (
+                                            <div id={String(rectId)} className="centralized">
+                                                <span id={String(rectId)}>{divItem.subject}</span>
+                                            </div>
+                                        )}
+                                        {divItem.clicked && (
+                                            <AssignmentPopUp onClose={clearClicked} assignment={assignment} rectId={rectId} />
+                                        )}
                                     </div>
-                                ))}
-                            </div>
-                        ))
-                    }
+                                );
+                            })}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="model-container">

@@ -57,7 +57,7 @@ const AssignmentPopUp = (args) => {
     }
 
     return (
-        <div ref={containerRef} className="popUp-container">
+        <div id="popUp" ref={containerRef} className="popUp-container">
             <div className="align-right">
                 <button onClick={args.onClose} className="close">x</button>
             </div>
