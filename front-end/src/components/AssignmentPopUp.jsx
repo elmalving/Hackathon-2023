@@ -3,12 +3,13 @@ import httpClient from "../httpClient.jsx";
 import '../css/popUp.css';
 
 const AssignmentPopUp = (args) => {
+    const assignment = args.assignment;
     const containerRef = useRef(null);
     const [subject, setSubject] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [task, setTask] = useState('');
     const [url, setUrl] = useState('');
-
+    
     useEffect(() => {
         const container = containerRef.current;
 
@@ -61,7 +62,52 @@ const AssignmentPopUp = (args) => {
             <div className="align-right">
                 <button onClick={args.onClose} className="close">x</button>
             </div>
-        
+            {assignment ? (
+            <div className="row-gap">
+                <div className="column-container">
+                    <label className="column-label align-left">Subject</label>
+                    <div className="value-container">
+                        <div className="value-box">
+                            {assignment.subject}
+                        </div>
+                    </div>
+                </div>
+                <div className="column-container">
+                    <label className="column-label align-left">Difficulty</label>
+                    <div style={{backgroundColor: `${args.color}90`}} className="value-container">
+                        <div className="value-box">
+                            {args.assignment.difficulty.toUpperCase()}
+                        </div>
+                    </div>
+                </div>
+                <div className="column-container">
+                    <label className="column-label align-left">Task</label>
+                    <div className="value-container">
+                        <div className="value-box">
+                            {assignment.text}
+                        </div>
+                    </div>
+                </div>
+                {assignment.url ? (
+                <div className="column-container">
+                    <label className="column-label align-left">Exercise Link</label>
+                    <div className="value-container url">
+                        <div className="value-box">
+                            <a href={assignment.url}>{assignment.url}</a>
+                        </div>
+                    </div>
+                </div>
+                ) : ''}
+                <div className="column-container">
+                    <label className="column-label align-left">Date Assigned</label>
+                    <div className="value-container">
+                        <div className="value-box">
+                            {assignment.assigned_date}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ) : (
             <form className="login-form">
                 <div className="row-gap">
                     <div className="column-container">
@@ -131,6 +177,7 @@ const AssignmentPopUp = (args) => {
                     Create task
                 </button>
             </form>
+            )}
         </div>
     );
 }

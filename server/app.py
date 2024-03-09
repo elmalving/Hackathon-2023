@@ -53,7 +53,7 @@ def get_assignment():
             'difficulty': assignment.difficulty,
             'text': assignment.text,
             'url': assignment.url,
-            'assigned_date': assignment.assigned_date.isoformat(),
+            'assigned_date': assignment.assigned_date,
             'rect': assignment.rect
         }
         for assignment in user.assignments

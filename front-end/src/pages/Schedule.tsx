@@ -89,35 +89,36 @@ const Schedule = () => {
                 </div>
                 <div className="row-container">
                     {[...Array(columnAmount)].map((_, outer_index) => (
-                        <div key={outer_index} className="row">
-                            <div className="time">{outer_index + rowAmount}:00</div>
-                            {[...Array(rowAmount)].map((_, index) => {
-                                const rectId = index + outer_index * rowAmount;
-                                const divItem = divData[rectId];
-                                const assignment = assignments.find(assignment => assignment.rect === rectId);
+                    <div key={outer_index} className="row">
+                        <div className="time">{outer_index + rowAmount}:00</div>
+                        {[...Array(rowAmount)].map((_, index) => {
+                            const rectId = index + outer_index * rowAmount;
+                            const divItem = divData[rectId];
+                            const color = divItem.color;
+                            const assignment = assignments.find(assignment => assignment.rect === rectId);
 
-                                return (
-                                    <div
-                                        key={index}
-                                        id={String(rectId)}
-                                        data-day={daysOfWeek[index]}
-                                        data-hour={outer_index + rowAmount}
-                                        onClick={createAssignment}
-                                        className="rect"
-                                        style={{ backgroundColor: divItem.color }}
-                                    >
-                                        {divItem.subject && (
-                                            <div id={String(rectId)} className="centralized">
-                                                <span id={String(rectId)}>{divItem.subject}</span>
-                                            </div>
-                                        )}
-                                        {divItem.clicked && (
-                                            <AssignmentPopUp onClose={clearClicked} assignment={assignment} rectId={rectId} />
-                                        )}
-                                    </div>
-                                );
-                            })}
+                            return (
+                        <div
+                            key={index}
+                            id={String(rectId)}
+                            data-day={daysOfWeek[index]}
+                            data-hour={outer_index + rowAmount}
+                            onClick={createAssignment}
+                            className="rect"
+                            style={{ backgroundColor: color }}
+                        >
+                                {divItem.subject && (
+                            <div id={String(rectId)} className="centralized">
+                                <span id={String(rectId)}>{divItem.subject}</span>
+                            </div>
+                                )}
+                                {divItem.clicked && (
+                            <AssignmentPopUp onClose={clearClicked} assignment={assignment} color={color} rectId={rectId} />
+                                )}
                         </div>
+                            );
+                        })}
+                    </div>
                     ))}
                 </div>
             </div>
