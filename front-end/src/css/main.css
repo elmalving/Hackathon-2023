@@ -10,10 +10,14 @@ body {
     display: none;
 }
 
-button, input {
+button, input, textarea {
     border: none;
     background-color: transparent;
     outline: none;
+}
+textarea {
+    resize: vertical;
+    overflow-y: hidden;
 }
 
 button, a {

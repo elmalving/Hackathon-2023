@@ -147,14 +147,14 @@ const AssignmentPopUp = (args) => {
                     </div>
                     <div className="column-container column-gap">
                         <label className="column-label align-left" htmlFor="task">Task</label>
-                        <div className="input-container">
-                            <input
+                        <div className="value-container">
+                            <textarea
                                 id="task"
                                 placeholder="Task text"
                                 type="text"
                                 value={task}
                                 onChange={(e) => setTask(e.target.value)}
-                                className="input login-input"
+                                className="textarea login-input"
                                 required
                             />
                         </div>
