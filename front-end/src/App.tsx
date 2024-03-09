@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Chat from './components/Chat';
-import Schedule from './components/Schedule';
-import Progress from './components/Progress';
-import Login from './components/Login';
-import Register from './components/Register';
+import Chat from './pages/Chat';
+import Schedule from './pages/Schedule';
+import Progress from './pages/Progress';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import { User } from './types'
 import httpClient from "./httpClient";
@@ -33,7 +33,8 @@ const Roote = () => {
     const [user, setUser] = useState<User | null>(null);
     const navigate = useNavigate();
     const currentPage = useLocation()['pathname'];
-
+    const [loading, setLoading] = useState(true);
+    
     useEffect(() => {
         (async () => {
             try {
@@ -50,12 +51,15 @@ const Roote = () => {
                 }
                 console.log('Not authenticated');
             }
+            setLoading(false);
         })();
     }, []);
 
     return (
         <div className='container'>
-            {user === null ? (
+            {loading ? (
+                <></>
+            ) : user === null ? (
                 <Outlet />
             ) : (
                 <>

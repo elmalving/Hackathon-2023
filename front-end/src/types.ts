@@ -11,5 +11,5 @@ export interface Assignment {
     text: string;
     url: string;
     assigned_date: Date;
-    rect: string;
+    rect: number;
 }

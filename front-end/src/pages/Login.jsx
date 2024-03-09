@@ -17,6 +17,10 @@ const Login = () => {
             window.location.href = '/';
         }
         catch (e) {
+            if (!e.response) {
+                alert('Database is down.');
+                return;
+            }
             if (e.response.status === 401) {
                 alert('Invalid credentials.');
             }

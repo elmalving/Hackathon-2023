@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import httpClient from "../httpClient.jsx";
-import AssignmentPopUp from './AssignmentPopUp.jsx';
+import AssignmentPopUp from '../components/AssignmentPopUp.jsx';
 import { Assignment } from "../types.ts";
 import '../css/schedule.css'
 
@@ -8,7 +8,7 @@ const Schedule = () => {
     const rowAmount = 7;
     const columnAmount = 14;
     const daysOfWeek = ['Monday', 'Thursday', 'Wednesday', 'Tuesday', 'Friday', 'Saturday', 'Sunday'];
-    const [divData, setDivData] = useState(Array.from({ length: columnAmount * rowAmount }, (_, index) => ({ id: index, subject: null, color: 'inherit', clicked: false })));
+    const [divData, setDivData] = useState(Array.from({ length: columnAmount * rowAmount }, (_, index) => ({ id: index, subject: '', color: 'inherit', clicked: false })));
     const [assignments, setAssignments] = useState<Assignment[]>([]);
     const colors = {
         'Math': {
@@ -62,12 +62,18 @@ const Schedule = () => {
     }, []);
     
     useEffect(() => {
-        assignments.forEach((assignment) => {
-            divData[assignment.rect].subject = assignment.subject;
-            divData[assignment.rect].color = colors[assignment.subject][assignment.difficulty];
-        });
+        setDivData((prevDivData) => 
+            prevDivData.map(div => {
+                assignments.forEach((assignment) => {
+                    if (div.id == assignment.rect) {
+                        div.subject = assignment.subject;
+                        div.color = colors[assignment.subject][assignment.difficulty];
+                    }
+                });
+                return div;
+            }
+        ));
     }, [assignments]);
-
 
     return (
         <div className="content">
