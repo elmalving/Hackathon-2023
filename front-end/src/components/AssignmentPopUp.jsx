@@ -9,6 +9,9 @@ const AssignmentPopUp = (args) => {
     const [difficulty, setDifficulty] = useState('');
     const [task, setTask] = useState('');
     const [url, setUrl] = useState('');
+    const [answer, setAnswer] = useState('');
+    const [comment, setComment] = useState('');
+    const [grade, setGrade] = useState('');
     
     useEffect(() => {
         const container = containerRef.current;
@@ -35,6 +38,48 @@ const AssignmentPopUp = (args) => {
         };
     }, []);
 
+    const submitGrade = async () => {
+        if (grade == '') {
+            return;
+        }
+        try {
+            await httpClient.post('//localhost:5000/add_grade', {
+                grade,
+                comment,
+                email: args.email,
+                rectId: args.rectId
+            });
+
+            args.loadAssignments();
+            args.onClose();
+        }
+        catch (e) {
+            if (e.response.status === 409) {
+                alert(e.response.data.error);
+            }
+        }
+    }
+
+    const submitAnswer = async () => {
+        if (answer == '') {
+            return;
+        }
+        try {
+            await httpClient.post('//localhost:5000/add_answer', {
+                answer,
+                rectId: args.rectId
+            });
+
+            args.loadAssignments();
+            args.onClose();
+        }
+        catch (e) {
+            if (e.response.status === 409) {
+                alert(e.response.data.error);
+            }
+        }
+    } 
+
     const createTask = async () => {
         if (subject == '' || difficulty == '' || task == '') {
             return;
@@ -45,10 +90,12 @@ const AssignmentPopUp = (args) => {
                 difficulty,
                 task,
                 url,
+                email: args.email,
                 rectId: args.rectId
             });
-
-            location.reload();
+            
+            args.loadAssignments();
+            args.onClose();
         }
         catch (e) {
             if (e.response.status === 409) {
@@ -63,56 +110,124 @@ const AssignmentPopUp = (args) => {
                 <button onClick={args.onClose} className="close">x</button>
             </div>
             {assignment ? (
-            <div className="row-gap">
-                <div className="column-container">
-                    <label className="column-label align-left">Subject</label>
-                    <div className="value-container">
-                        <div className="value-box">
-                            {assignment.subject}
+            <div>
+                <div className="row-gap">
+                    <div className="column-container">
+                        <label className="column-label align-left">Subject</label>
+                        <div className="value-container">
+                            <div className="value-box">
+                                {assignment.subject}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="column-container">
-                    <label className="column-label align-left">Difficulty</label>
-                    <div style={{backgroundColor: `${args.color}90`}} className="value-container">
-                        <div className="value-box">
-                            {args.assignment.difficulty.toUpperCase()}
+                    <div className="column-container">
+                        <label className="column-label align-left">Difficulty</label>
+                        <div style={{backgroundColor: `${args.color}90`}} className="value-container">
+                            <div className="value-box">
+                                {args.assignment.difficulty.toUpperCase()}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="column-container">
-                    <label className="column-label align-left">Task</label>
-                    <div className="value-container">
-                        <div className="value-box">
-                            {assignment.text}
+                    <div className="column-container">
+                        <label className="column-label align-left">Task</label>
+                        <div className="value-container">
+                            <div className="value-box">
+                                {assignment.text}
+                            </div>
                         </div>
                     </div>
-                </div>
-                {assignment.url ? (
-                <div className="column-container">
-                    <label className="column-label align-left">Exercise Link</label>
-                    <div className="value-container url">
-                        <div className="value-box">
-                            <a href={assignment.url}>{assignment.url}</a>
+                    {assignment.url &&
+                    <div className="column-container">
+                        <label className="column-label align-left">Exercise Link</label>
+                        <div className="value-container url">
+                            <div className="value-box">
+                                <a target="_blank" href={assignment.url}>{assignment.url}</a>
+                            </div>
+                        </div>
+                    </div>}
+                    <div className="column-container">
+                        <label className="column-label align-left">Date Assigned</label>
+                        <div className="value-container">
+                            <div className="value-box">
+                                {assignment.assigned_date}
+                            </div>
                         </div>
                     </div>
-                </div>
-                ) : ''}
-                <div className="column-container">
-                    <label className="column-label align-left">Date Assigned</label>
-                    <div className="value-container">
-                        <div className="value-box">
-                            {assignment.assigned_date}
+                    {assignment.answer && args.userEmail === 'test@gmail.com' ? (
+                    <>
+                    <div className="column-container">
+                        <label className="column-label align-left">Answer</label>
+                        <div className="value-container">
+                            <div className="value-box">
+                                {assignment.answer}
+                            </div>
                         </div>
                     </div>
+                    <div className="column-container">
+                        <label className="column-label align-left" htmlFor="comment">Comment</label>
+                        <div className="input-container">
+                            <textarea
+                                id="comment"
+                                placeholder="Write a comment (if necessary)"
+                                type="text"
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                className="textarea input-placeholder"
+                            />
+                        </div>
+                    </div>
+                    <div className="column-container">
+                        <label className="column-label align-left" htmlFor="grade">Grade</label>
+                        <div className="input-container">
+                            <select
+                                id="grade"
+                                value={grade}
+                                onChange={(e) => setGrade(e.target.value)}
+                                className="select"
+                                required
+                                >
+                                <option defaultValue={''} disabled hidden></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button className='submit-button submit-label' type='button' onClick={submitGrade}>
+                        Evaluate
+                    </button>
+                    </>
+                    ) : (args.userEmail != 'test@gmail.com' &&
+                    <>
+                    <div className="column-container">
+                        <label className="column-label align-left" htmlFor="answer">Answer</label>
+                        <div className="input-container">
+                            <textarea
+                                id="answer"
+                                placeholder="Write an answer for the given task"
+                                type="text"
+                                value={answer}
+                                onChange={(e) => setAnswer(e.target.value)}
+                                className="textarea input-placeholder"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <button className='submit-button submit-label' type='button' onClick={submitAnswer}>
+                        Submit answer
+                    </button>
+                    </>
+                    )}
                 </div>
             </div>
             ) : (
-            <form className="login-form">
+            <form>
                 <div className="row-gap">
                     <div className="column-container">
                         <label className="column-label align-left" htmlFor="subject">Subject</label>
-                        <div className="select-container">
+                        <div className="input-container">
                             <select
                                 id="subject"
                                 value={subject}
@@ -130,7 +245,7 @@ const AssignmentPopUp = (args) => {
                     </div>
                     <div className="column-container">
                         <label className="column-label align-left" htmlFor="difficulty">Difficulty</label>
-                        <div className="select-container">
+                        <div className="input-container">
                             <select
                                 id="difficulty"
                                 value={difficulty}
@@ -145,21 +260,21 @@ const AssignmentPopUp = (args) => {
                             </select>
                         </div>
                     </div>
-                    <div className="column-container column-gap">
+                    <div className="column-container">
                         <label className="column-label align-left" htmlFor="task">Task</label>
-                        <div className="value-container">
+                        <div className="input-container">
                             <textarea
                                 id="task"
                                 placeholder="Task text"
                                 type="text"
                                 value={task}
                                 onChange={(e) => setTask(e.target.value)}
-                                className="textarea login-input"
+                                className="textarea input-placeholder"
                                 required
                             />
                         </div>
                     </div>
-                    <div className="column-container column-gap">
+                    <div className="column-container">
                         <label className="column-label align-left" htmlFor="url">Exercise Link</label>
                         <div className="input-container">
                             <input
@@ -168,14 +283,14 @@ const AssignmentPopUp = (args) => {
                                 type="text"
                                 value={url}
                                 onChange={(e) => setUrl(e.target.value)}
-                                className="input login-input"
+                                className="input input-placeholder"
                             />
                         </div>
                     </div>
+                    <button className='submit-button submit-label' type='button' onClick={createTask}>
+                        Create task
+                    </button>
                 </div>
-                <button className='submit-button submit-label' type='button' onClick={createTask}>
-                    Create task
-                </button>
             </form>
             )}
         </div>

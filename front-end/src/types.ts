@@ -12,4 +12,5 @@ export interface Assignment {
     url: string;
     assigned_date: Date;
     rect: number;
+    answer: string;
 }

@@ -321,10 +321,6 @@
 }
 
 .input {
-    display: flex;
-    align-self: stretch;
-    padding: 12px 0;
-    flex: 1;
     color: #FFF;
     font-family: Plus Jakarta Sans;
     font-size: 16px;

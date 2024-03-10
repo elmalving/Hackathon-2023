@@ -45,8 +45,8 @@ const Register = () => {
                         <Link className="font-gradient" to={'/login'}>Log In</Link>
                     </div>
                 </div>
-                <div className="align-center">
-                    <div className="login-content">
+                <div className="column-container">
+                    <div className="login-content align-center">
                         <div className="row-gap">
                             <div className="login-welcome">
                                 Welcome aboard! Let's start your educational journey together.
@@ -64,7 +64,7 @@ const Register = () => {
                                                 type="text"
                                                 value={firstName}
                                                 onChange={(e) => setfirstName(e.target.value)}
-                                                className="input login-input"
+                                                className="input input-placeholder"
                                                 required
                                             />
                                         </div>
@@ -78,7 +78,7 @@ const Register = () => {
                                                 type="text"
                                                 value={lastName}
                                                 onChange={(e) => setlastName(e.target.value)}
-                                                className="input login-input"
+                                                className="input input-placeholder"
                                                 required
                                             />
                                         </div>
@@ -96,7 +96,7 @@ const Register = () => {
                                                 type="email"
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
-                                                className="input login-input"
+                                                className="input input-placeholder"
                                                 required
                                             />
                                         </div>
@@ -110,7 +110,7 @@ const Register = () => {
                                                 type="password"
                                                 value={password}
                                                 onChange={(e) => setPassword(e.target.value)}
-                                                className="input login-input"
+                                                className="input input-placeholder"
                                                 required
                                             />
                                         </div>
@@ -120,7 +120,7 @@ const Register = () => {
                             <div className="row-gap">
                                 <div className="column-container">
                                     <label className="column-label align-left" htmlFor="degree">Current Degree</label>
-                                    <div className="select-container">
+                                    <div className="input-container">
                                         <select
                                             id="degree"
                                             value={degree}

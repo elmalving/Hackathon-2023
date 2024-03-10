@@ -53,6 +53,7 @@
 
 .textarea {
     width: 90%;
+    min-height: 3vh;
     padding: 3.5% 5%;
     color: #FFF;
     font-family: Plus Jakarta Sans;

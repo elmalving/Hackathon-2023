@@ -33,8 +33,8 @@ const Login = () => {
                 <div className="align-left">
                     <img src='./brand.svg' className="logo"/>
                 </div>
-                <div className="align-center">
-                    <div className="login-content">
+                <div className="column-container">
+                    <div className="align-center login-content">
                         <div className="row-gap">
                             <div className="login-welcome">
                                 Welcome to&nbsp;<span style={{ fontWeight: '700' }}>StudyMate!</span>
@@ -56,7 +56,7 @@ const Login = () => {
                                         type="email" 
                                         value={email} 
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="input login-input"
+                                        className="input input-placeholder"
                                     />
                                 </div>
                                 <div className="input-container">
@@ -70,7 +70,7 @@ const Login = () => {
                                         type="password" 
                                         value={password} 
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="input login-input"
+                                        className="input input-placeholder"
                                     />
                                 </div>
                             </div>

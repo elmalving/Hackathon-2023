@@ -1,3 +1,16 @@
+.email-container {
+    position: absolute;
+    display: flex;
+    width: 15%;
+    height: 3%;
+    border-radius: 8px;
+    background: #1A1D21;
+    border: 1px solid var(--noble-black-500, #363A3D);
+}
+.email-container select {
+    padding: 0;
+}
+
 .schedule {
     display: flex;
     justify-content: center;

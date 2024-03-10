@@ -19,6 +19,9 @@ class Assignment(db.Document):
     url = db.StringField(max_length=100)
     assigned_date = db.DateTimeField(default=datetime.now)
     rect = db.IntField()
+    answer = db.StringField(max_length=400)
+    comment = db.StringField(max_length=400)
+    grade = db.IntField(min_value=1, max_value=5)
 
 
 class User(db.Document):

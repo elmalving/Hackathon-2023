@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import httpClient from "../httpClient.jsx";
 import AssignmentPopUp from '../components/AssignmentPopUp.jsx';
-import { Assignment } from "../types.ts";
-import '../css/schedule.css'
+import { User, Assignment } from "../types.ts";
+import '../css/schedule.css';
 
 const Schedule = () => {
+    const [user, setUser] = useState<User | null>(null);
+    const [email, setEmail] = useState('');
     const rowAmount = 7;
     const columnAmount = 14;
     const daysOfWeek = ['Monday', 'Thursday', 'Wednesday', 'Tuesday', 'Friday', 'Saturday', 'Sunday'];
     const [divData, setDivData] = useState(Array.from({ length: columnAmount * rowAmount }, (_, index) => ({ id: index, subject: '', color: 'inherit', clicked: false })));
     const [assignments, setAssignments] = useState<Assignment[]>([]);
+    const [emails, setEmails] = useState([]);
     const colors = {
         'Math': {
             'easy': '#B6F09C',
@@ -53,20 +56,64 @@ const Schedule = () => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await httpClient.get('//localhost:5000/@assignment');
-                setAssignments(response.data.assignments);
+                const response = await httpClient.get('//localhost:5000/@me');
+                
+                setUser(response.data);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.log('Not authenticated')
             }
         })();
     }, []);
+
+    useEffect(() => {
+        if (user?.email === 'test@gmail.com') {
+            (async () => {
+                try {
+                    const response = await httpClient.get('//localhost:5000/@all_email', {
+                        params: { email: user?.email },
+                    });
+    
+                    setEmails(response.data.map((email: string) => Object.values(email)));
+                } catch (error) {
+                    console.error('Error fetching emails:', error);
+                }
+            })();
+        }
+    }, [user]);
+
+    const loadAssignments = async () => {
+        try {
+            const response = await httpClient.get('//localhost:5000/@assignment', {
+                params: { email: email },
+            });
+            
+            setAssignments(response.data.assignments);
+        } catch (error) {
+            console.error('Error fetching assignments:', error);
+        }
+    }
+
+    useEffect(() => {
+        loadAssignments();
+    }, [email]);
     
     useEffect(() => {
+        setDivData((prevDivData) => 
+            prevDivData.map(div => {
+                div.subject = '';
+                div.color = 'inherit';
+                return div;
+            }
+        ));
         setDivData((prevDivData) => 
             prevDivData.map(div => {
                 assignments.forEach((assignment) => {
                     if (div.id == assignment.rect) {
                         div.subject = assignment.subject;
+                        if (assignment.answer) {
+                            div.color = '#F5D7DBF0';
+                            return;
+                        }
                         div.color = colors[assignment.subject][assignment.difficulty];
                     }
                 });
@@ -77,6 +124,22 @@ const Schedule = () => {
 
     return (
         <div className="content">
+            {user?.email === 'test@gmail.com' &&
+            <div className="email-container">
+                <select
+                    id="email"
+                    value={email}
+                    onChange={(e) => {setEmail(e.target.value)}}
+                    className="select"
+                    >
+                    <option hidden>Select email</option>
+                    {emails.map((item) => (
+                        <option key={item} value={item}>
+                        {item}
+                        </option>
+                    ))}
+                </select>
+            </div>}
             <div className="schedule">
                 <div className="day-container">
                     <div className="day">Mon</div>
@@ -94,8 +157,8 @@ const Schedule = () => {
                         {[...Array(rowAmount)].map((_, index) => {
                             const rectId = index + outer_index * rowAmount;
                             const divItem = divData[rectId];
-                            const color = divItem.color;
                             const assignment = assignments.find(assignment => assignment.rect === rectId);
+                            const color = divItem.color;
 
                             return (
                         <div
@@ -113,7 +176,7 @@ const Schedule = () => {
                             </div>
                                 )}
                                 {divItem.clicked && (
-                            <AssignmentPopUp onClose={clearClicked} assignment={assignment} color={color} rectId={rectId} />
+                            <AssignmentPopUp onClose={clearClicked} loadAssignments={loadAssignments} userEmail={user?.email} email={email} assignment={assignment} color={color} rectId={rectId} />
                                 )}
                         </div>
                             );
