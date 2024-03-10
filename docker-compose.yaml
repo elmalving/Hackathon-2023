@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./front-end
+    container_name: front-end
+    ports:
+      - '3000:4173'
+    stdin_open: true
+    tty: true
+  backend:
+    build: ./server
+    container_name: back-end
+    ports:
+      - '5000:5000'
+    stdin_open: true
+    tty: true
+    environment:
+      - MONGODB_HOST=mongodb
+      - REDIS_HOST=redis
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+  redis:
+    image: redis
+    container_name: redisdb
+    ports:
+      - "6379:6379"
