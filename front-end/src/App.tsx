@@ -7,6 +7,7 @@ import Progress from './pages/Progress';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+import Subject from './pages/Subject';
 import { User } from './types'
 import httpClient from "./httpClient";
 import './css/main.css'
@@ -20,6 +21,7 @@ function App() {
                 <Route path='/progress' element={<Progress />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/subject' element={<Subject />} />
                 <Route path='*' element={<NotFound />} />
             </Route>
         )

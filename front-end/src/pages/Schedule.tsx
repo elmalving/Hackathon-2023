@@ -5,8 +5,9 @@ import { User, Assignment } from "../types.ts";
 import '../css/schedule.css';
 
 const Schedule = () => {
+    const admin = 'test@gmail.com';
     const [user, setUser] = useState<User | null>(null);
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(admin);
     const rowAmount = 7;
     const columnAmount = 14;
     const daysOfWeek = ['Monday', 'Thursday', 'Wednesday', 'Tuesday', 'Friday', 'Saturday', 'Sunday'];
@@ -40,6 +41,9 @@ const Schedule = () => {
         if (!/^\d+$/.test(e.target.id)) { // isDigit method -_-
             return;
         }
+        if (!assignments.find(assignment => assignment.rect == e.target.id) && user?.email != admin) {
+            return;
+        }
         setDivData(divData.map(div => {
             div.clicked = div.id == e.target.id;
             return div;
@@ -66,7 +70,7 @@ const Schedule = () => {
     }, []);
 
     useEffect(() => {
-        if (user?.email === 'test@gmail.com') {
+        if (user?.email === admin) {
             (async () => {
                 try {
                     const response = await httpClient.get('//localhost:5000/@all_email', {
@@ -124,7 +128,7 @@ const Schedule = () => {
 
     return (
         <div className="content">
-            {user?.email === 'test@gmail.com' &&
+            {user?.email === admin &&
             <div className="email-container">
                 <select
                     id="email"
@@ -176,7 +180,7 @@ const Schedule = () => {
                             </div>
                                 )}
                                 {divItem.clicked && (
-                            <AssignmentPopUp onClose={clearClicked} loadAssignments={loadAssignments} userEmail={user?.email} email={email} assignment={assignment} color={color} rectId={rectId} />
+                            <AssignmentPopUp onClose={clearClicked} loadAssignments={loadAssignments} admin={admin} userEmail={user?.email} email={email} assignment={assignment} color={color.substring(0, 7)} rectId={rectId} />
                                 )}
                         </div>
                             );

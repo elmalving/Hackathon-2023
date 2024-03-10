@@ -1,0 +1,10 @@
+.assignment-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 8px;
+    margin: 2% 0;
+    padding: 2%;
+    gap: 2vh;
+}

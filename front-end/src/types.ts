@@ -10,7 +10,9 @@ export interface Assignment {
     difficulty: string;
     text: string;
     url: string;
-    assigned_date: Date;
+    assigned_date: string;
     rect: number;
     answer: string;
+    comment: string;
+    grade: number;
 }

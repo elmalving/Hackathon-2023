@@ -319,6 +319,9 @@
     align-items: center;
     justify-content: flex-start;
 }
+.message-input input {
+    width: 100%;
+}
 
 .input {
     color: #FFF;

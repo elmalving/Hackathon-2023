@@ -60,7 +60,9 @@ def get_assignment():
             'url': assignment.url,
             'assigned_date': assignment.assigned_date,
             'rect': assignment.rect,
-            'answer': assignment.answer
+            'answer': assignment.answer,
+            'comment': assignment.comment,
+            'grade': assignment.grade
         }
         for assignment in user.assignments
     ]
@@ -75,6 +77,11 @@ def get_all_email():
     user_id = session.get('user_id')
     if user_id is None:
         return jsonify({'error': 'Unauthorized'}), 401
+
+    user = User.objects(id=user_id).first()
+
+    if user.email != 'test@gmail.com':
+        return jsonify({'error': 'Access denied!'}), 403
 
     emails = User.objects.only('email').exclude('id')
 
@@ -200,6 +207,16 @@ def login_user():
     return jsonify({
         'id': user.id,
         'email': user.email
+    })
+
+
+@app.route('/analyze_input', methods=['POST'])
+def analyze_input():
+    message = request.json['message']
+
+    return jsonify({
+        'answer': "Don't try to test what is not done yet",
+        'material': ['url1', 'url2']
     })
 
 

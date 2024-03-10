@@ -130,7 +130,7 @@ const Navbar = () => {
                 </div>
                 <div className="list">
                     <div className="link-container">
-                        <a href='#'>
+                        <Link state={'Math'} to={'/subject'}>
                             <div className="link-box">
                                 <div className="green-shadow item-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
@@ -161,10 +161,10 @@ const Navbar = () => {
                                     Math
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                     <div className="link-container">
-                        <a href='#'>
+                        <Link state={'Physics'} to={'/subject'}>
                             <div className="link-box">
                                 <div className="red-shadow item-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
@@ -195,10 +195,10 @@ const Navbar = () => {
                                     Physics
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                     <div className="link-container">
-                        <a href='#'>
+                        <Link state={'Czech Language'} to={'/subject'}>
                             <div className="link-box">
                                 <div className="orange-shadow item-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
@@ -229,10 +229,10 @@ const Navbar = () => {
                                     Czech Language
                                 </div>
                             </div>  
-                        </a>
+                        </Link>
                     </div>
                     <div className="link-container">
-                        <a href='#'>
+                        <Link state={'Geography'} to={'/subject'}>
                             <div className="link-box">
                                 <div className="aqua-shadow item-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="10 0 20 20" fill="none">
@@ -263,7 +263,7 @@ const Navbar = () => {
                                     Geography
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                     <div className="link-container">
                         <a href='#'>

@@ -3,7 +3,7 @@ import React from "react";
 const Progress = () => {
     return (
         <div className="content">
-            <div className="text">There will be student's progress.</div>
+            <div className="welcome-text align-middle">There will be student's progress.</div>
         </div>
     );
 }

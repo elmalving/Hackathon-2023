@@ -5,8 +5,8 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [message, setInput] = useState('');
     const [isVisible, setIsVisible] = useState(true);
+    const messagesEndRef = useRef(null);
 
-    const messagesEndRef = useRef<HTMLDivElement | null>(null);
     const handleSubmit = (e) => {
         e.preventDefault();
         setInput('');
@@ -17,15 +17,16 @@ const Chat = () => {
             try {
                 setIsVisible(false);
                 setMessages(prev => [...prev, message]);
-                const answer = await httpClient.post('//localhost:5000/analyze_input', {
+                const responce = await httpClient.post('//localhost:5000/analyze_input', {
                     message,
                 });
-                setMessages(prev => [...prev, answer.data['answer']]);
-                if (answer.data['answer'] != 'Bot was unable to provide a satisfactory answer.') {
-                    answer.data['material'].forEach((e) => {
+                setMessages(prev => [...prev, responce.data['answer']]);
+                if (responce.data['answer'] != 'Bot was unable to provide a satisfactory answer.') {
+                    responce.data['material'].forEach((e) => {
                         setMessages(prev => [...prev, e]);
-                    }
-                )};
+                    });
+                }
+                console.log(messagesEndRef.current)
                 setInput('');
             }
             catch (e) {
@@ -34,11 +35,11 @@ const Chat = () => {
                         alert('Invalid credentials.');
                     }
                     else {
-                        console.log('Server error.')
+                        console.log('Server error.');
                     }
                 }
                 else {
-                    console.log('Server is currently down.')
+                    console.error(e);
                 }
             }
         }
@@ -84,7 +85,7 @@ const Chat = () => {
                             onChange={(e) => setInput(e.target.value)}
                             placeholder='You can ask me anything! I am here to help.'
                         />
-                        <button className="button-icon" type='submit' onClick={() => proceed_request()}>
+                        <button className="button-icon" type='submit' onClick={proceed_request}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M9.73088 14.2692L19.2337 4.76642M5.48667 7.99807L17.1349 4.11532C18.8344 3.54883 20.4512 5.16564 19.8847 6.8651L16.002 18.5134C15.3895 20.3507 12.8614 20.5304 11.9952 18.7981L10.0549 14.9174C9.84451 14.4967 9.50338 14.1555 9.08267 13.9452L5.20192 12.0048C3.46966 11.1387 3.64933 8.61052 5.48667 7.99807Z" stroke="#CDCECF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>

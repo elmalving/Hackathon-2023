@@ -153,7 +153,7 @@ const AssignmentPopUp = (args) => {
                             </div>
                         </div>
                     </div>
-                    {assignment.answer && args.userEmail === 'test@gmail.com' ? (
+                    {assignment.answer && args.userEmail === args.admin ? (
                     <>
                     <div className="column-container">
                         <label className="column-label align-left">Answer</label>
@@ -199,7 +199,7 @@ const AssignmentPopUp = (args) => {
                         Evaluate
                     </button>
                     </>
-                    ) : (args.userEmail != 'test@gmail.com' &&
+                    ) : (args.userEmail != args.admin &&
                     <>
                     <div className="column-container">
                         <label className="column-label align-left" htmlFor="answer">Answer</label>
