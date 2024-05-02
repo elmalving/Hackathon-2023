@@ -6,8 +6,6 @@ load_dotenv()
 
 
 class ApplicationConfig:
-    SECRET_KEY = os.environ['SECRET_KEY']
-
     MONGODB_SETTINGS = {
         'db': 'db',
         'host': os.environ.get('MONGODB_HOST', 'localhost'),
