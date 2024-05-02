@@ -4,16 +4,6 @@ from flask_cors import CORS
 from flask_session import Session
 from config import ApplicationConfig
 from documents import db, User, Assignment
-from ChatResponseBot import SearchAssistant, ChatGPT_Assistant, TestGenerator
-
-openai_api_key = "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"
-bing_search_api_key = "42e8664ce249475db05e95ad586face1"
-bing_search_endpoint = "https://api.bing.microsoft.com/v7.0/search"
-
-search_assistant = SearchAssistant(openai_api_key, bing_search_api_key)
-test_generator = TestGenerator(openai_api_key, bing_search_api_key)
-chatgpt_assistant = ChatGPT_Assistant(openai_api_key, bing_search_api_key)
-
 
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
