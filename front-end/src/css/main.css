@@ -10,7 +10,9 @@ body {
     display: none;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
     border: none;
     background-color: transparent;
     outline: none;
@@ -20,7 +22,8 @@ textarea {
     overflow-y: hidden;
 }
 
-button, a {
+button,
+a {
     cursor: pointer;
 }
 
@@ -30,11 +33,11 @@ a {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #1A1D21 inset;
-    -webkit-text-fill-color: #FFF;
+    -webkit-box-shadow: 0 0 0 30px #1a1d21 inset;
+    -webkit-text-fill-color: #fff;
 }
 
 .container {
